@@ -1,0 +1,204 @@
+@use './../../sass/colors' as *;
+
+.appointment-section {
+
+    .section-title {
+        margin-bottom: 30px;
+    }
+
+   .google-map {
+        height: 600px;
+        position: relative;
+        margin-bottom: 30px;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .location-name {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            background: $color-white;
+            padding: 15px;
+            width: 80%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            border-radius: 30px;
+
+            svg {
+                background: $color-blue;
+                color: $color-white;
+                width: 60px;
+                height: 50px;
+                padding: 10px;
+                line-height: 50px;
+                border-radius: 15px;
+                border: 5px solid #DBDEFA;
+            }
+
+            p {
+                margin-left: 20px;
+                margin-bottom: 0;
+                font-weight: 600;
+                color: $color-black;
+            }
+        }
+   }
+
+    .appointment-form-area {
+        display: none;
+        padding-left: 50px;
+    }
+}
+
+.appointment-call {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+    .icon {
+        width: 45px;
+        height: 45px;
+        margin-right: 30px;
+        background: $color-white;
+        line-height: 45px;
+        text-align: center;
+        border-radius: 12px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 0 5px 3px rgb(0 0 0 / 8%);
+    }
+    
+    .call-text {
+
+        p {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: $color-blue;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        h6 {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px){
+    .appointment-section {
+        .appointment-form-area {
+            padding-left: 0;
+
+            .form-group {
+                margin-bottom: 10px;
+
+                label {
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                }
+
+                .form-control {
+                    height: 45px;
+                    border-radius: 10px;
+                }
+            }
+            
+        }
+    }
+
+    .appointment-section .google-map .location-name{
+        width: 100%;
+    }
+
+    .appointment-section .google-map .location-name p{
+        margin-left: 5px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+/* Container for the map */
+.google-map {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin-bottom: 20px;
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px;
+}
+
+/* Iframe styling */
+.google-map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: hue-rotate(190deg); /* Applies a blue tone to the map */
+    border-radius: 10px;
+}
+
+/* Responsive section styling */
+.appointment-section {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+.appointment-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.appointment-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.appointment-section .col-lg-10, 
+.appointment-section .col-md-6 {
+    margin-bottom: 30px;
+}
+
+/* Location name styling */
+.location-name {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.location-name p {
+    
+}
+
+/* Map container and iframe responsive behavior */
+@media (max-width: 991px) {
+    .appointment-section .col-lg-5,
+    .appointment-section .col-md-6 {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .appointment-section {
+        padding: 30px 10px;
+    }
+
+    .appointment-form-area {
+        text-align: center;
+    }
+}

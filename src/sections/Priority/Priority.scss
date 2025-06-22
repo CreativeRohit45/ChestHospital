@@ -1,0 +1,140 @@
+@use './../../sass/colors' as *;
+
+.priority-section {
+    padding-bottom: 100px;
+    
+    .priority-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 10%;
+            height: 10%;
+            top: -12%;
+            left: 50%;
+            background: #DBEFFA;
+            border-radius: 20px;
+        }
+    }
+
+    .priority-text {
+        max-width: 700px;
+        margin-bottom: 30px;
+
+        .section-title {
+            margin-bottom: 30px;
+
+            h2 {
+                max-width: inherit;
+            }
+        }
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+    .priority-section {
+        padding-bottom: 20px;
+
+        .priority-img {
+            text-align: left;
+
+            &::before {
+                display: none;
+            }
+
+            img{
+                width: 90%;
+                margin-bottom: 10px;
+            }
+        }
+
+        .priority-text {
+            margin-top: 10px;
+
+            .theme-btn {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .priority-section {
+        padding-bottom: 70px;
+
+        .priority-img {
+            margin-right: 0;
+            text-align: center;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        .priority-text {
+            .theme-btn {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+// Medium Device Responsive
+@media (min-width: 768px) and (max-width: 991px) {
+    .priority-section {
+        padding-bottom: 70px;
+
+        .priority-img {
+            margin-right: 20;
+            text-align: center;
+
+            &::before {
+                display: none;
+            }
+            
+            img{
+                width: 95%;
+            }
+        }
+
+        .priority-text {
+            .theme-btn {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+// Medium Device Responsive 
+@media (min-width: 991px) and (max-width: 1199px) {
+    .priority-section {
+        padding-bottom: 70px;
+        padding-top: 0px;
+
+        .priority-img {
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+// Large Device Responsive
+@media (min-width: 1200px) and (max-width: 1800px) {
+    .priority-section {
+        .priority-img {
+            &::before {
+                display: none;
+            }
+        }
+    }
+} 

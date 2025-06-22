@@ -1,0 +1,201 @@
+.about-section {
+    height: 750px;
+    margin-top: 60px;
+    
+    .about-banner-text {
+        h2 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        p {
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+    }
+
+    .mobile-banner-img{
+        display: none;
+    }
+
+
+    .about-banner-img {
+        text-align: center;
+        position: relative;
+
+        img {
+            border-radius: 10px;
+            width: 80%;
+
+            &:nth-child(2) {
+                margin-top: 120px;
+            }
+        }
+
+        .pattern {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 0;
+            z-index: -1;
+        }
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+    .about-section {
+        text-align: center;
+        height: 100%;
+        padding-top: 70px;
+        margin-top: 40px;
+
+        .about-banner-text {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .theme-btn{
+                text-align: left;
+            }
+
+            h2 {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                text-align: left;
+                margin-top: 20px;
+                margin-bottom: 25px;
+            }
+        }
+
+        .mobile-banner-img{
+            width: 80%;
+            display: flex;
+
+            img{
+                border-radius: 10px;
+            }
+        }
+
+        .about-banner-img {
+            display: none;
+            img {
+                &:nth-child(2) {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .about-section {
+        text-align: center;
+        height: 100%;
+        padding-top: 70px;
+
+        .about-banner-text {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                margin-top: 20px;
+                margin-bottom: 25px;
+            }
+        }
+
+        .about-banner-img {
+            display: none;
+            img {
+                max-width: 170px;
+                &:nth-child(2) {
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        .mobile-banner-img{
+            width: 80%;
+            display: flex;
+
+            img{
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+// Medium Responsive
+@media (min-width: 768px) and (max-width: 991px) {
+    .about-section {
+        text-align: center;
+        height: 100%;
+        padding: 100px 0;
+
+        .about-banner-text {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .about-banner-img{
+            margin-top: 20px;
+            display: none;
+            
+            img{
+                border-radius: 10px;
+            }
+        }
+
+        .mobile-banner-img{
+            width: 80%;
+            display: flex;
+
+            img{
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+// Large Responsive
+@media (min-width: 992px) and (max-width: 1199px) {
+    .about-section {
+        height: 100%;
+        padding: 100px 0;
+
+        .about-banner-img {
+            img {
+                max-width: 510px;
+            }
+        }
+    }
+}

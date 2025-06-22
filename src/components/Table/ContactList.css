@@ -1,0 +1,196 @@
+.contact-list {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0 10px;
+}
+
+.contact-list-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-bar label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.filter-bar input[type="date"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.filter-bar button {
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-bar button:hover {
+  background-color: #2980b9;
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  min-width: 800px;
+}
+
+.contact-table th,
+.contact-table td {
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.contact-table th {
+  background-color: #f0f4f8;
+  color: #34495e;
+}
+
+.contact-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.contact-table tr:hover {
+  background-color: #f1f9ff;
+}
+
+.contact-table td {
+  word-break: break-word;
+}
+
+.contact-table td:nth-child(6) {
+  max-width: 300px;
+  width: 40%;
+}
+
+.no-contacts {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-table {
+    font-size: 14px;
+    min-width: 100%;
+  }
+
+  .contact-list-container {
+    padding: 10px;
+  }
+
+  .contact-table td,
+  .contact-table th {
+    padding: 10px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .filter-bar label,
+  .filter-bar input,
+  .filter-bar button {
+    width: 100%;
+  }
+
+  .contact-table td:nth-child(6) {
+    max-width: 100%;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-table {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .pagination span {
+    font-size: 14px;
+  }
+
+  .pagination button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

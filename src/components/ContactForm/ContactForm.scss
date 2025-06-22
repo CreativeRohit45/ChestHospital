@@ -1,0 +1,97 @@
+// ContactForm.scss
+@use '../../sass/colors' as *;
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form .form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form .btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.contact-form .btn:hover:not(:disabled) {
+    background-color: #0056b3;
+    color: white;
+}
+
+.contact-form .alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.contact-form .alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.contact-form .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.contact-form .appointment-call {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contact-form .appointment-call .icon img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.contact-form .appointment-call .call-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form .appointment-call .call-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.contact-form .appointment-call .call-text h6 {
+    margin: 0;
+    font-size: 18px;
+    color: #007bff;
+}
