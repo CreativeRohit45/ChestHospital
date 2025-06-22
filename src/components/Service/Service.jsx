@@ -12,15 +12,12 @@ const Service = ({ serviceList }) => {
         const serviceSlug = title.toLowerCase()
             .replace(/&/g, 'and')
             .replace(/[^a-z0-9\s]/g, '')
-            .replace(/\s+/g, '-');
+            .replace(/\s+/g, '-')
+            .trim();
         
-        navigate(`/treatment/${serviceSlug}`, { 
-            state: { 
-                title, 
-                description, 
-                icon 
-            } 
-        });
+        console.log('Navigating to:', `/treatment/${serviceSlug}`); // Debug log
+        
+        navigate(`/treatment/${serviceSlug}`);
     };
 
     return (
