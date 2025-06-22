@@ -15,10 +15,17 @@
             color: $color-blue;
             text-decoration: none;
             font-weight: 700;
-            background: #583fbc1e;
+            background: rgba(46, 134, 171, 0.1);
             padding: 15px 25px;
             display: inline-block;
             border-radius: 15px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $color-blue;
+                color: $color-white;
+                transform: translateY(-2px);
+            }
 
             svg {
                 margin-left: 10px;
@@ -31,25 +38,26 @@
 }
 
 .btn {
-    background: $color-blue;
-        color: $color-white;
-        padding: 14px 20px;
-        text-decoration: none;
-        border-radius: 15px;
-        transition: .3s;
-        border: 1px solid transparent;
-        font-size: 14px;
-        font-weight: 500;
-        display: inline-block;
-        box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+    color: $color-white;
+    padding: 14px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: .3s;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    box-shadow: 0px 7px 29px 0px rgba(46, 134, 171, 0.3);
 
-        &:hover {
-            background: $color-white;
-            color: $color-blue;
-            border: 1px solid $color-blue;
-        }
+    &:hover {
+        background: $color-white;
+        color: $color-blue;
+        border: 1px solid $color-blue;
+        transform: translateY(-2px);
+        box-shadow: 0px 10px 35px 0px rgba(46, 134, 171, 0.4);
+    }
 }
-
 
 //Mobile Responsive
 @media (max-width: 575px){

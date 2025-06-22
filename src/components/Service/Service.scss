@@ -1,18 +1,37 @@
+@use '../../sass/colors' as *;
+
 .service-box {
-    border: 1px solid #1819451a;
+    border: 1px solid rgba(46, 134, 171, 0.2);
     padding: 15px;
     border-radius: 32px;
     text-align: center;
     margin-bottom: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(46, 134, 171, 0.2);
+        border-color: $color-blue;
+    }
 
     .icon-area {
-        background: #DBDEFA;
+        background: linear-gradient(135deg, $color-light-blue 0%, rgba(162, 59, 114, 0.1) 100%);
         padding: 80px;
         border-radius: 30px;
         margin-bottom: 30px;
+        transition: all 0.3s ease;
 
         .icon-box {
             margin: auto;
+        }
+    }
+
+    &:hover .icon-area {
+        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+        
+        .icon-box {
+            transform: scale(1.1);
         }
     }
 
@@ -21,16 +40,23 @@
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 20px;
+            color: $color-black;
+            transition: color 0.3s ease;
 
             a {
                 text-decoration: none;
-                color: #181945;
+                color: inherit;
             }
         }
 
         p {
             font-size: 14px;
+            color: $color-gray;
         }
+    }
+
+    &:hover .service-text h3 {
+        color: $color-blue;
     }
 }
 

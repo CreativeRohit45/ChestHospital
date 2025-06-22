@@ -16,6 +16,10 @@
         font-size: 40px;
         font-weight: 700;
         margin-bottom: 20px;
+        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     p {

@@ -1,0 +1,233 @@
+@use '../sass/colors' as *;
+
+.treatment-details-section {
+    margin-top: 120px;
+    padding: 50px 0;
+
+    .treatment-hero {
+        margin-bottom: 80px;
+
+        .treatment-content {
+            .section-title {
+                margin-bottom: 30px;
+
+                span {
+                    color: $color-blue;
+                }
+
+                h2 {
+                    color: $color-black;
+                    font-size: 48px;
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .treatment-image {
+            text-align: center;
+
+            img {
+                width: 100%;
+                max-width: 500px;
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(46, 134, 171, 0.2);
+            }
+        }
+    }
+
+    .treatment-details-content {
+        .treatment-info {
+            background: $color-white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+
+            h3 {
+                color: $color-blue;
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            h4 {
+                color: $color-green;
+                font-size: 24px;
+                font-weight: 600;
+                margin: 30px 0 15px 0;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 1.8;
+                color: $color-gray;
+                margin-bottom: 20px;
+            }
+
+            .symptoms-list,
+            .expectations-list {
+                padding-left: 0;
+                margin: 20px 0;
+
+                li {
+                    list-style: none;
+                    padding: 10px 0;
+                    border-bottom: 1px solid rgba(46, 134, 171, 0.1);
+                    position: relative;
+                    padding-left: 30px;
+
+                    &:before {
+                        content: "✓";
+                        position: absolute;
+                        left: 0;
+                        color: $color-blue;
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+
+        .treatment-sidebar {
+            .appointment-card {
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                color: $color-white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                margin-bottom: 30px;
+
+                h4 {
+                    color: $color-white;
+                    font-size: 24px;
+                    margin-bottom: 15px;
+                }
+
+                p {
+                    color: rgba(255, 255, 255, 0.9);
+                    margin-bottom: 25px;
+                }
+
+                .theme-btn a {
+                    background: $color-white;
+                    color: $color-blue;
+                    border: 2px solid $color-white;
+
+                    &:hover {
+                        background: transparent;
+                        color: $color-white;
+                        border-color: $color-white;
+                    }
+                }
+            }
+
+            .contact-info {
+                background: $color-light-blue;
+                padding: 30px;
+                border-radius: 20px;
+
+                h5 {
+                    color: $color-blue;
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+
+                .contact-item {
+                    margin-bottom: 20px;
+
+                    strong {
+                        color: $color-black;
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+
+                    p {
+                        color: $color-gray;
+                        margin-bottom: 5px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+    .treatment-details-section {
+        margin-top: 100px;
+        padding: 30px 0;
+
+        .treatment-hero {
+            margin-bottom: 50px;
+
+            .treatment-content {
+                margin-bottom: 30px;
+
+                .section-title h2 {
+                    font-size: 32px;
+                }
+            }
+
+            .treatment-image img {
+                max-width: 100%;
+            }
+        }
+
+        .treatment-details-content {
+            .treatment-info {
+                padding: 25px;
+
+                h3 {
+                    font-size: 24px;
+                }
+
+                h4 {
+                    font-size: 20px;
+                }
+            }
+
+            .treatment-sidebar {
+                margin-top: 30px;
+
+                .appointment-card {
+                    padding: 25px;
+
+                    h4 {
+                        font-size: 20px;
+                    }
+                }
+
+                .contact-info {
+                    padding: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .treatment-details-section {
+        .treatment-hero {
+            .treatment-content .section-title h2 {
+                font-size: 36px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .treatment-details-section {
+        .treatment-hero {
+            .treatment-content .section-title h2 {
+                font-size: 40px;
+            }
+        }
+    }
+}
