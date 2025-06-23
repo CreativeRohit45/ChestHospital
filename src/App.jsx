@@ -6,7 +6,7 @@ import Services from './pages/Services';
 import Admin from './pages/Admin';
 import Contactus from './pages/Contact/Contactus';
 import ContactList from './components/Table/ContactList';
-import TreatmentDetails from './pages/TreatmentDetails';
+import TreatmentSection from './sections/TreatmentSection/TreatmentSection';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Route path="/contact" element={<Contactus />} />
       <Route path="/contactList" element={<ContactList />} />
       <Route path="/api/admin" element={<Admin />} />
-      <Route path="/treatment/:serviceSlug" element={<TreatmentDetails />} />
+      <Route path="/treatment/:serviceSlug" element={<TreatmentSection />} />
     </Routes>
   );
 }
