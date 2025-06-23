@@ -4,7 +4,7 @@ import './Services.scss';
 import ServicesData from './ServiceData';
 import Service from '../../components/Service/Service';
 
-const Services = () => {
+const Services = ({ onServiceClick }) => {
     const [visibleCount, setVisibleCount] = useState(8);
 
     const handleLoadMore = () => {
@@ -14,11 +14,14 @@ const Services = () => {
     return (
         <section className='service-section pt-100 pb-70' data-aos="fade-up" data-aos-duration="2000">
             <div className="container">
-                <div className="row">
-                    <div className="col-lg-6 col-sm-6">
-                        <SectionTitle title="Feel amazing about your respiratory health" subTitle="Services" />
+                <div className="row align-items-center">
+                    <div className="col-lg-6">
+                        <SectionTitle 
+                            title="Feel amazing about your respiratory health" 
+                            subTitle="Services" 
+                        />
                     </div>
-                    <div className="col-lg-6 col-sm-6">
+                    <div className="col-lg-6">
                         <p className='service-title-text'>
                             Empower yourself to breathe easier and live healthier by prioritizing your respiratory wellness.
                         </p>
@@ -27,14 +30,18 @@ const Services = () => {
 
                 <div className="row">
                     {ServicesData.slice(0, visibleCount).map((singleService, index) => (
-                        <Service key={index} serviceList={singleService} />
+                        <Service 
+                            key={index} 
+                            serviceList={singleService} 
+                            onServiceClick={onServiceClick}
+                        />
                     ))}
                 </div>
 
                 {visibleCount < ServicesData.length && (
-                    <div className="text-center mt-4">
-                        <button className="btn btn-primary" onClick={handleLoadMore}>
-                            Load More
+                    <div className="text-center mt-5">
+                        <button className="btn btn-primary load-more-btn" onClick={handleLoadMore}>
+                            Load More Services
                         </button>
                     </div>
                 )}

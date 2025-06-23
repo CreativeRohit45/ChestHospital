@@ -1,97 +1,203 @@
-// ContactForm.scss
 @use '../../sass/colors' as *;
 
-.contact-form {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.appointment-container {
+    .contact-form {
+        background: $color-white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+
+        &:hover {
+            border-color: $color-blue;
+            box-shadow: 0 20px 40px rgba(28, 102, 255, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+
+            label {
+                color: $color-black;
+                font-weight: 600;
+                font-size: 16px;
+                margin-bottom: 8px;
+                display: block;
+            }
+
+            .form-control {
+                width: 100%;
+                padding: 15px 20px;
+                border: 2px solid rgba(28, 102, 255, 0.1);
+                border-radius: 12px;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                background: $color-white;
+
+                &:focus {
+                    outline: none;
+                    border-color: $color-blue;
+                    box-shadow: 0 0 0 3px rgba(28, 102, 255, 0.1);
+                }
+
+                &::placeholder {
+                    color: $color-gray;
+                }
+            }
+
+            select.form-control {
+                cursor: pointer;
+                
+                &:disabled {
+                    background-color: #f8f9fa;
+                    cursor: not-allowed;
+                }
+            }
+
+            textarea.form-control {
+                min-height: 120px;
+                resize: vertical;
+            }
+        }
+
+        .appointment-btn {
+            background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+            color: $color-white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3);
+
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 35px rgba(28, 102, 255, 0.4);
+            }
+
+            &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+                transform: none;
+            }
+        }
+
+        .alert {
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            font-weight: 500;
+
+            &.alert-danger {
+                background-color: #fee;
+                border: 2px solid #fcc;
+                color: #c33;
+            }
+
+            &.alert-success {
+                background-color: #efe;
+                border: 2px solid #cfc;
+                color: #363;
+            }
+        }
+
+        .appointment-call {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+            border-radius: 15px;
+
+            .icon {
+                width: 50px;
+                height: 50px;
+                margin-right: 20px;
+                background: $color-white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 5px 15px rgba(28, 102, 255, 0.2);
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            .call-text {
+                p {
+                    font-size: 14px;
+                    color: $color-blue;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+
+                h6 {
+                    font-size: 18px;
+                    color: $color-black;
+                    font-weight: 700;
+                    margin-bottom: 2px;
+                }
+            }
+        }
+    }
 }
 
-.contact-form .form-group {
-    margin-bottom: 20px;
+// Mobile Responsive
+@media (max-width: 575px) {
+    .appointment-container {
+        .contact-form {
+            padding: 25px;
+
+            .form-group {
+                margin-bottom: 20px;
+
+                label {
+                    font-size: 14px;
+                }
+
+                .form-control {
+                    padding: 12px 15px;
+                    font-size: 14px;
+                }
+            }
+
+            .appointment-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+
+            .appointment-call {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+
+                .icon {
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                }
+
+                .call-text {
+                    h6 {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
 }
 
-.contact-form .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.contact-form .form-control:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.contact-form .btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.contact-form .btn:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-}
-
-.contact-form .btn:hover:not(:disabled) {
-    background-color: #0056b3;
-    color: white;
-}
-
-.contact-form .alert {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 5px;
-}
-
-.contact-form .alert-danger {
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
-}
-
-.contact-form .alert-success {
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
-}
-
-.contact-form .appointment-call {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.contact-form .appointment-call .icon img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.contact-form .appointment-call .call-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form .appointment-call .call-text p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-}
-
-.contact-form .appointment-call .call-text h6 {
-    margin: 0;
-    font-size: 18px;
-    color: #007bff;
+@media (min-width: 576px) and (max-width: 767px) {
+    .appointment-container {
+        .contact-form {
+            padding: 30px;
+        }
+    }
 }

@@ -1,9 +1,14 @@
-// Updated colors to match logo - blue and green theme
-$color-blue: #2E86AB;        // Primary blue from logo
-$color-green: #A23B72;       // Secondary green/pink from logo
-$color-accent: #F18F01;      // Accent orange
-$color-black: #181945;
+// Updated color palette based on CMYK values provided
+// C:69 M:30 Y:100 K:25 = RGB(96, 132, 0) - Green
+// C:89 M:60 Y:00 K:00 = RGB(28, 102, 255) - Blue
+
+$color-blue: #1C66FF;        // Primary blue (C:89 M:60 Y:00 K:00)
+$color-green: #608400;       // Primary green (C:69 M:30 Y:100 K:25)
+$color-accent: #FF6B35;      // Accent orange
+$color-black: #1A1A1A;
 $color-white: #ffffff;
-$color-gray: #74758F;
-$color-light-blue: #E8F4F8;  // Light blue background
-$color-light-green: #F0F8F0; // Light green background
+$color-gray: #6B7280;
+$color-light-blue: #E6F0FF;  // Light blue background
+$color-light-green: #F0F8E6; // Light green background
+$color-dark-blue: #0F4FCC;   // Darker blue for hover states
+$color-dark-green: #4A6600;  // Darker green for hover states
