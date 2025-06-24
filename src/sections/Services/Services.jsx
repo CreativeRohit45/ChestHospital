@@ -3,12 +3,25 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import './Services.scss';
 import ServicesData from './ServiceData';
 import Service from '../../components/Service/Service';
+import { useNavigate } from 'react-router-dom';
 
-const Services = ({ onServiceClick }) => {
+const Services = () => {
     const [visibleCount, setVisibleCount] = useState(8);
+    const navigate = useNavigate();
 
     const handleLoadMore = () => {
         setVisibleCount(prev => prev + 8);
+    };
+
+    const handleServiceClick = (serviceName) => {
+        // Navigate to treatments page with the service name as a hash
+        const serviceSlug = serviceName.toLowerCase()
+            .replace(/&/g, 'and')
+            .replace(/[^a-z0-9\s]/g, '')
+            .replace(/\s+/g, '-')
+            .trim();
+        
+        navigate(`/treatments#${serviceSlug}`);
     };
 
     return (
@@ -33,7 +46,7 @@ const Services = ({ onServiceClick }) => {
                         <Service 
                             key={index} 
                             serviceList={singleService} 
-                            onServiceClick={onServiceClick}
+                            onServiceClick={handleServiceClick}
                         />
                     ))}
                 </div>

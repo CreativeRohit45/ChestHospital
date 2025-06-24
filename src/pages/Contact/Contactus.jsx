@@ -5,6 +5,7 @@ import './Contactus.scss';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import Footer from '../../sections/Footer/Footer';
 import { FaPhone, FaMapMarkerAlt, FaClock, FaEnvelope } from 'react-icons/fa';
+import contactImage from '../../assets/contactusimg.jpg';
 
 const Contactus = () => {
     return (
@@ -92,14 +93,26 @@ const Contactus = () => {
                         </div>
                         
                         <div className="col-lg-6">
-                            <div className="contact-map">
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2846038672787!2d73.94232950990396!3d18.561203467860643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3e05b42a915%3A0x9bd1c98d9c23c892!2sDr.%20Vaibhav%20Pandharkar!5e0!3m2!1sen!2sin!4v1747890165580!5m2!1sen!2sin"
-                                    title="Clinic Location"
-                                    allowFullScreen=""
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade">
-                                </iframe>
+                            <div className="contact-image-section">
+                                <div className="contact-image">
+                                    <img src={contactImage} alt="Contact Us" />
+                                    <div className="contact-image-overlay">
+                                        <div className="overlay-content">
+                                            <h4>Expert Respiratory Care</h4>
+                                            <p>Professional consultation and treatment for all your chest and lung health needs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="contact-map">
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2846038672787!2d73.94232950990396!3d18.561203467860643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3e05b42a915%3A0x9bd1c98d9c23c892!2sDr.%20Vaibhav%20Pandharkar!5e0!3m2!1sen!2sin!4v1747890165580!5m2!1sen!2sin"
+                                        title="Clinic Location"
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
                             </div>
                         </div>
                     </div>

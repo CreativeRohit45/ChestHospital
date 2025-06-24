@@ -4,7 +4,6 @@
     height: 650px;
     margin-top: 140px;
     position: relative;
-   /* z-index: 1;*/
 
     .banner-pattern {
         position: absolute;
@@ -12,7 +11,6 @@
         right: 0;
         left: 0;
         width: 100%;
-       /* z-index: -1;*/
     }
 }
 
@@ -21,10 +19,13 @@
         font-size: 64px;
         font-weight: 700;
         margin-bottom: 40px;
+        line-height: 1.2;
     }
+    
     .banner-bottom {
         margin-top: 60px;
         display: flex;
+        align-items: center;
 
         .theme-btn {
             margin-right: 50px;
@@ -66,7 +67,6 @@
             }
             
             .call-text {
-
                 p {
                     font-size: 14px;
                     text-transform: uppercase;
@@ -79,6 +79,7 @@
                     font-size: 18px;
                     text-transform: uppercase;
                     font-weight: 700;
+                    margin-bottom: 2px;
                 }
             }
         }
@@ -91,10 +92,15 @@
 
     .banner-img {
         margin-bottom: -150px;
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
     }
 
     .info-box {
-        
         bottom: 5%;
         left: 0%;
         background: $color-white;
@@ -145,41 +151,49 @@
                 z-index: -1;
             }
         }
-
     }
-
 }
 
+.shpaess {
+    width: 8rem;
+    transform: rotate(-20deg);
+    position: absolute;
+    top: 10px;
+    left: 15%;
+    transform: translateX(-50%) rotate(-20deg);
+}
 
 // Mobile Responsive
 @media (max-width: 575px) {
-
-    // Banner CSS
     .banner-section {
-        height: 800px;
-        margin-top: 140px
+        height: auto;
+        min-height: 700px;
+        margin-top: 120px;
+        padding: 50px 0;
     }
+    
     .banner-img-area {
         .banner-img {
             margin-bottom: 0;
+            margin-top: 30px;
         }
 
         .shapes {
             img {
                 &:nth-child(1) {
-                    max-width: 70px ;
+                    max-width: 70px;
                 }
             }
         }
-        
     }
+    
     .banner-text {
         text-align: center;
         padding-top: 30px;
         
         h1 {
-            font-size: 30px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 20px;
         }
 
         .banner-bottom {
@@ -203,6 +217,7 @@
 
                 .call-text {
                     text-align: left;
+                    
                     p {
                         font-size: 12px;
                     }
@@ -216,34 +231,36 @@
     }
 }
 
-
 @media (min-width: 576px) and (max-width: 767px) {
-    // Banner CSS
     .banner-section {
-        height: 900px;
-        margin-top: 140px
+        height: auto;
+        min-height: 800px;
+        margin-top: 120px;
+        padding: 50px 0;
     }
+    
     .banner-img-area {
         .banner-img {
             margin-bottom: 0;
+            margin-top: 30px;
         }
 
         .shapes {
             img {
                 &:nth-child(1) {
-                    max-width: 70px ;
+                    max-width: 70px;
                 }
             }
         }
-        
     }
+    
     .banner-text {
         text-align: center;
         padding-top: 30px;
         
         h1 {
-            font-size: 30px;
-            margin-bottom: 15px;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
 
         .banner-bottom {
@@ -267,6 +284,7 @@
 
                 .call-text {
                     text-align: left;
+                    
                     p {
                         font-size: 12px;
                     }
@@ -282,11 +300,13 @@
 
 // Medium Devices Responsive
 @media (min-width: 768px) and (max-width: 991px) {
-    // Banner CSS
     .banner-section {
-        height: 100%;
-        margin-top: 160px;
+        height: auto;
+        min-height: 600px;
+        margin-top: 140px;
+        padding: 50px 0;
     }
+    
     .banner-img-area {
         .banner-img {
             margin-bottom: 0;
@@ -295,47 +315,37 @@
         .shapes {
             img {
                 &:nth-child(1) {
-                    max-width: 70px ;
+                    max-width: 70px;
                 }
             }
         }
-        
     }
+    
     .banner-text {
         text-align: center;
         padding-top: 30px;
         
         h1 {
-            font-size: 40px;
-            margin-bottom: 15px;
+            font-size: 42px;
+            margin-bottom: 20px;
         }
 
         .banner-bottom {
             justify-content: center;
+            margin-top: 40px;
         }
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-    .banner-text  {
+    .banner-text {
         h1 {
-            font-size: 45px;
-            margin-bottom: 25px;
+            font-size: 50px;
+            margin-bottom: 30px;
         } 
 
         .banner-bottom {
-            margin-top: 40px;
+            margin-top: 50px;
         }
     }  
 }
-/* In your CSS file, e.g., App.css */
-.shpaess {
-    width: 8rem; /* Adjust the size as needed */
-    transform: rotate(-20deg);
-    position: absolute;
-    top: 10px; /* Adjust to move the image to the upper side */
-    left: 15%;
-     /* Center horizontally */
-    transform: translateX(-50%) rotate(-20deg); /* Center and rotate */
-  }
-  

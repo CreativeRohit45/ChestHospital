@@ -1,5 +1,80 @@
-.testimoni-slider {
-    .slick-arrow {
-        display: none !important;
+@use '../../sass/colors' as *;
+
+.testimonail-section {
+    .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .testimonial-slider-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .testimoni-slider {
+        .slick-dots {
+            bottom: -60px;
+            
+            li {
+                margin: 0 5px;
+                
+                button {
+                    &:before {
+                        font-size: 12px;
+                        color: $color-blue;
+                        opacity: 0.5;
+                    }
+                }
+                
+                &.slick-active button:before {
+                    opacity: 1;
+                    color: $color-blue;
+                }
+            }
+        }
+
+        .slick-arrow {
+            display: none !important;
+        }
+
+        .testimonial-slide {
+            padding: 0 15px;
+            
+            .single-testimoni {
+                width: 100%;
+                padding: 20px 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+    .testimonail-section {
+        .testimonial-slider-wrapper {
+            padding: 0 10px;
+        }
+
+        .testimoni-slider {
+            .testimonial-slide {
+                padding: 0 5px;
+            }
+
+            .slick-dots {
+                bottom: -40px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .testimonail-section {
+        .testimoni-slider {
+            .slick-dots {
+                bottom: -50px;
+            }
+        }
     }
 }

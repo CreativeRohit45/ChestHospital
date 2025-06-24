@@ -1,29 +1,26 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { useEffect } from 'react';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import './TreatmentSection.scss';
+import { useLocation } from 'react-router-dom';
 
-const TreatmentSection = forwardRef((props, ref) => {
-    const sectionRef = useRef(null);
-    const treatmentRefs = useRef({});
+const TreatmentSection = () => {
+    const location = useLocation();
 
-    useImperativeHandle(ref, () => ({
-        scrollToTreatment: (serviceName) => {
-            const treatmentKey = serviceName.toLowerCase()
-                .replace(/&/g, 'and')
-                .replace(/[^a-z0-9\s]/g, '')
-                .replace(/\s+/g, '-')
-                .trim();
-            
-            const element = treatmentRefs.current[treatmentKey];
+    useEffect(() => {
+        // Check if there's a hash in the URL and scroll to that treatment
+        if (location.hash) {
+            const element = document.getElementById(location.hash.substring(1));
             if (element) {
-                element.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start',
-                    inline: 'nearest'
-                });
+                setTimeout(() => {
+                    element.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }, 100);
             }
         }
-    }));
+    }, [location]);
 
     const treatments = [
         {
@@ -253,7 +250,7 @@ const TreatmentSection = forwardRef((props, ref) => {
     ];
 
     return (
-        <section className='treatment-section pt-100 pb-70' ref={sectionRef} data-aos="fade-up" data-aos-duration="2000">
+        <section className='treatment-section pt-100 pb-70' data-aos="fade-up" data-aos-duration="2000">
             <div className="container">
                 <SectionTitle 
                     subTitle="TREATMENTS"
@@ -265,8 +262,8 @@ const TreatmentSection = forwardRef((props, ref) => {
                     {treatments.map((treatment, index) => (
                         <div 
                             key={treatment.id} 
+                            id={treatment.id}
                             className="treatment-card"
-                            ref={el => treatmentRefs.current[treatment.id] = el}
                             data-aos="fade-up" 
                             data-aos-duration="1000"
                             data-aos-delay={index * 100}
@@ -308,8 +305,6 @@ const TreatmentSection = forwardRef((props, ref) => {
             </div>
         </section>
     );
-});
-
-TreatmentSection.displayName = 'TreatmentSection';
+};
 
 export default TreatmentSection;

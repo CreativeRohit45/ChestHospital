@@ -1,19 +1,22 @@
 @use './../../sass/colors' as *;
 
 .appointment-section {
-
     .section-title {
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 
-   .google-map {
+    .google-map {
         height: 600px;
         position: relative;
         margin-bottom: 30px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
 
         iframe {
             width: 100%;
             height: 100%;
+            border: none;
         }
 
         .location-name {
@@ -22,22 +25,23 @@
             left: 0;
             right: 0;
             background: $color-white;
-            padding: 15px;
-            width: 80%;
+            padding: 20px;
+            width: 85%;
             margin: auto;
             display: flex;
             align-items: center;
-            border-radius: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(28, 102, 255, 0.15);
 
             svg {
                 background: $color-blue;
                 color: $color-white;
-                width: 60px;
+                width: 50px;
                 height: 50px;
-                padding: 10px;
-                line-height: 50px;
-                border-radius: 15px;
-                border: 5px solid #DBDEFA;
+                padding: 12px;
+                border-radius: 12px;
+                border: 3px solid #DBDEFA;
+                flex-shrink: 0;
             }
 
             p {
@@ -45,9 +49,11 @@
                 margin-bottom: 0;
                 font-weight: 600;
                 color: $color-black;
+                font-size: 16px;
+                line-height: 1.4;
             }
         }
-   }
+    }
 
     .appointment-form-area {
         display: none;
@@ -74,7 +80,6 @@
     }
     
     .call-text {
-
         p {
             font-size: 14px;
             text-transform: uppercase;
@@ -92,113 +97,87 @@
 }
 
 // Mobile Responsive
-@media (max-width: 575px){
+@media (max-width: 575px) {
     .appointment-section {
+        .google-map {
+            height: 400px;
+            
+            .location-name {
+                width: 95%;
+                padding: 15px;
+                bottom: 15px;
+                
+                svg {
+                    width: 40px;
+                    height: 40px;
+                    padding: 8px;
+                }
+                
+                p {
+                    margin-left: 15px;
+                    font-size: 14px;
+                }
+            }
+        }
+
         .appointment-form-area {
             padding-left: 0;
 
             .form-group {
-                margin-bottom: 10px;
+                margin-bottom: 15px;
 
                 label {
-                    font-size: 12px;
-                    margin-bottom: 5px;
+                    font-size: 14px;
+                    margin-bottom: 8px;
                 }
 
                 .form-control {
                     height: 45px;
                     border-radius: 10px;
+                    padding: 12px 15px;
                 }
             }
-            
         }
-    }
-
-    .appointment-section .google-map .location-name{
-        width: 100%;
-    }
-
-    .appointment-section .google-map .location-name p{
-        margin-left: 5px;
-        font-size: 12px;
-        font-weight: bold;
     }
 }
 
-/* Container for the map */
+@media (min-width: 576px) and (max-width: 767px) {
+    .appointment-section {
+        .google-map {
+            height: 450px;
+            
+            .location-name {
+                width: 90%;
+                
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .appointment-section {
+        .google-map {
+            height: 500px;
+        }
+    }
+}
+
+/* Enhanced map styling */
 .google-map {
     position: relative;
     overflow: hidden;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    margin-bottom: 20px;
-    border: 2px solid #007bff; /* Blue border */
-    border-radius: 10px;
-}
+    border: 2px solid rgba(28, 102, 255, 0.1);
+    transition: all 0.3s ease;
 
-/* Iframe styling */
-.google-map iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    filter: hue-rotate(190deg); /* Applies a blue tone to the map */
-    border-radius: 10px;
-}
-
-/* Responsive section styling */
-.appointment-section {
-    padding: 40px 0;
-    background-color: #f9f9f9;
-}
-
-.appointment-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.appointment-section .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.appointment-section .col-lg-10, 
-.appointment-section .col-md-6 {
-    margin-bottom: 30px;
-}
-
-/* Location name styling */
-.location-name {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: #333;
-    margin-top: 10px;
-}
-
-.location-name p {
-    
-}
-
-/* Map container and iframe responsive behavior */
-@media (max-width: 991px) {
-    .appointment-section .col-lg-5,
-    .appointment-section .col-md-6 {
-        width: 100%;
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .appointment-section {
-        padding: 30px 10px;
+    &:hover {
+        border-color: $color-blue;
+        box-shadow: 0 20px 40px rgba(28, 102, 255, 0.15);
     }
 
-    .appointment-form-area {
-        text-align: center;
+    iframe {
+        filter: hue-rotate(10deg) saturate(1.1);
     }
 }
