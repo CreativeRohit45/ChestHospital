@@ -1,0 +1,138 @@
+@use '../../sass/colors' as *;
+
+.services-banner-section {
+    margin-top: 120px;
+    background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        
+        h2 {
+            background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .service-item {
+        background: $color-white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(28, 102, 255, 0.2);
+            border-color: $color-blue;
+
+            .service-image img {
+                transform: scale(1.1);
+            }
+        }
+
+        .service-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+        }
+
+        .service-content {
+            padding: 30px;
+
+            h3 {
+                color: $color-blue;
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 15px;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    left: 0;
+                    width: 40px;
+                    height: 3px;
+                    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                    border-radius: 2px;
+                }
+            }
+
+            p {
+                color: $color-gray;
+                font-size: 15px;
+                line-height: 1.6;
+                margin: 0;
+            }
+        }
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+    .services-banner-section {
+        margin-top: 100px;
+        
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .service-item {
+            .service-image {
+                height: 200px;
+            }
+
+            .service-content {
+                padding: 25px;
+
+                h3 {
+                    font-size: 20px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .services-banner-section {
+        margin-top: 110px;
+        
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .services-banner-section {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+    }
+}

@@ -129,8 +129,6 @@
             }
 
             .treatment-details {
-                margin-bottom: 30px;
-
                 .symptoms-section,
                 .treatment-approach {
                     h4 {
@@ -198,48 +196,6 @@
                     }
                 }
             }
-
-            .treatment-actions {
-                display: flex;
-                gap: 15px;
-                flex-wrap: wrap;
-
-                .btn {
-                    padding: 12px 25px;
-                    border-radius: 10px;
-                    text-decoration: none;
-                    text-align: center;
-                    font-weight: 600;
-                    font-size: 14px;
-                    transition: all 0.3s ease;
-                    border: 2px solid transparent;
-                    min-width: 150px;
-
-                    &.btn-primary {
-                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
-                        color: $color-white;
-
-                        &:hover {
-                            background: $color-white;
-                            color: $color-blue;
-                            border-color: $color-blue;
-                            transform: translateY(-2px);
-                        }
-                    }
-
-                    &.btn-secondary {
-                        background: $color-white;
-                        color: $color-blue;
-                        border-color: $color-blue;
-
-                        &:hover {
-                            background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
-                            color: $color-white;
-                            transform: translateY(-2px);
-                        }
-                    }
-                }
-            }
         }
     }
 }
@@ -280,8 +236,6 @@
                 }
 
                 .treatment-details {
-                    margin-bottom: 25px;
-
                     .symptoms-section,
                     .treatment-approach {
                         margin-bottom: 20px;
@@ -299,16 +253,6 @@
                         p {
                             font-size: 13px;
                         }
-                    }
-                }
-
-                .treatment-actions {
-                    flex-direction: column;
-
-                    .btn {
-                        min-width: auto;
-                        padding: 10px 20px;
-                        font-size: 13px;
                     }
                 }
             }

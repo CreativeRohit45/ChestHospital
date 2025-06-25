@@ -311,11 +311,6 @@ const TreatmentSection = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div className="treatment-actions">
-                                            <a href="/contact" className="btn btn-primary">Book Consultation</a>
-                                            <a href="tel:+919158450788" className="btn btn-secondary">Call Now</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
