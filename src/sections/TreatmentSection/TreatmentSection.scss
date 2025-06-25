@@ -16,32 +16,60 @@
         }
     }
 
-    .treatments-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 40px;
-        margin-top: 40px;
+    .treatments-container {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .treatment-card {
         background: $color-white;
         border-radius: 20px;
-        overflow: hidden;
+        padding: 40px;
+        margin-bottom: 40px;
         box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
         transition: all 0.3s ease;
         border: 2px solid transparent;
         scroll-margin-top: 140px;
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
 
         &:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 25px 50px rgba(28, 102, 255, 0.2);
             border-color: $color-blue;
+
+            &:before {
+                transform: scaleY(1);
+            }
+
+            .treatment-image img {
+                transform: scale(1.05);
+            }
+
+            .treatment-number {
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                color: $color-white;
+            }
         }
 
         .treatment-image {
             position: relative;
-            height: 250px;
+            border-radius: 15px;
             overflow: hidden;
+            height: 280px;
+            margin-bottom: 20px;
 
             img {
                 width: 100%;
@@ -50,44 +78,54 @@
                 transition: transform 0.3s ease;
             }
 
-            .treatment-overlay {
+            .treatment-number {
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
-                color: $color-white;
-                padding: 20px;
-                transform: translateY(100%);
-                transition: transform 0.3s ease;
-
-                h3 {
-                    margin: 0;
-                    font-size: 24px;
-                    font-weight: 700;
-                    color: $color-white;
-                }
-            }
-
-            &:hover {
-                img {
-                    transform: scale(1.1);
-                }
-
-                .treatment-overlay {
-                    transform: translateY(0);
-                }
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background: $color-white;
+                color: $color-blue;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-weight: 700;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
             }
         }
 
         .treatment-content {
-            padding: 30px;
+            .treatment-header {
+                margin-bottom: 30px;
 
-            .treatment-description {
-                font-size: 16px;
-                color: $color-gray;
-                margin-bottom: 25px;
-                line-height: 1.6;
+                h3 {
+                    color: $color-blue;
+                    font-size: 28px;
+                    font-weight: 700;
+                    margin-bottom: 15px;
+                    position: relative;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        bottom: -5px;
+                        left: 0;
+                        width: 50px;
+                        height: 3px;
+                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                        border-radius: 2px;
+                    }
+                }
+
+                .treatment-description {
+                    font-size: 16px;
+                    color: $color-gray;
+                    line-height: 1.6;
+                    margin: 0;
+                }
             }
 
             .treatment-details {
@@ -95,10 +133,8 @@
 
                 .symptoms-section,
                 .treatment-approach {
-                    margin-bottom: 25px;
-
                     h4 {
-                        color: $color-blue;
+                        color: $color-black;
                         font-size: 18px;
                         font-weight: 600;
                         margin-bottom: 15px;
@@ -137,6 +173,17 @@
                                 font-size: 16px;
                             }
 
+                            &.more-symptoms {
+                                color: $color-blue;
+                                font-weight: 600;
+                                font-style: italic;
+
+                                &:before {
+                                    content: "•";
+                                    color: $color-blue;
+                                }
+                            }
+
                             &:last-child {
                                 border-bottom: none;
                             }
@@ -158,9 +205,7 @@
                 flex-wrap: wrap;
 
                 .btn {
-                    flex: 1;
-                    min-width: 140px;
-                    padding: 12px 20px;
+                    padding: 12px 25px;
                     border-radius: 10px;
                     text-decoration: none;
                     text-align: center;
@@ -168,6 +213,7 @@
                     font-size: 14px;
                     transition: all 0.3s ease;
                     border: 2px solid transparent;
+                    min-width: 150px;
 
                     &.btn-primary {
                         background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
@@ -203,33 +249,66 @@
     .treatment-section {
         margin-top: 100px;
         
-        .treatments-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
         .treatment-card {
+            padding: 25px;
+            margin-bottom: 30px;
+
             .treatment-image {
                 height: 200px;
+                margin-bottom: 25px;
 
-                .treatment-overlay {
-                    transform: translateY(0);
-                    background: rgba(28, 102, 255, 0.9);
-
-                    h3 {
-                        font-size: 20px;
-                    }
+                .treatment-number {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 16px;
+                    top: 15px;
+                    right: 15px;
                 }
             }
 
             .treatment-content {
-                padding: 20px;
+                .treatment-header {
+                    margin-bottom: 25px;
+
+                    h3 {
+                        font-size: 22px;
+                    }
+
+                    .treatment-description {
+                        font-size: 14px;
+                    }
+                }
+
+                .treatment-details {
+                    margin-bottom: 25px;
+
+                    .symptoms-section,
+                    .treatment-approach {
+                        margin-bottom: 20px;
+
+                        h4 {
+                            font-size: 16px;
+                        }
+
+                        .symptoms-list li {
+                            font-size: 13px;
+                            padding: 6px 0;
+                            padding-left: 20px;
+                        }
+
+                        p {
+                            font-size: 13px;
+                        }
+                    }
+                }
 
                 .treatment-actions {
                     flex-direction: column;
 
                     .btn {
                         min-width: auto;
+                        padding: 10px 20px;
+                        font-size: 13px;
                     }
                 }
             }
@@ -241,18 +320,30 @@
     .treatment-section {
         margin-top: 110px;
         
-        .treatments-grid {
-            grid-template-columns: 1fr;
-            gap: 35px;
+        .treatment-card {
+            padding: 30px;
+
+            .treatment-image {
+                height: 220px;
+            }
+
+            .treatment-content {
+                .treatment-header h3 {
+                    font-size: 24px;
+                }
+            }
         }
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .treatment-section {
-        .treatments-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+        .treatment-card {
+            padding: 35px;
+
+            .treatment-image {
+                height: 250px;
+            }
         }
     }
 }

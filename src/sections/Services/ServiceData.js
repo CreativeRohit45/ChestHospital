@@ -85,6 +85,36 @@ const ServicesData = [
     icon: iconFour,
     title: "Tuberculosis treatment",
     description: "We offer accurate TB diagnosis and effective treatment regimens following national guidelines, ensuring full recovery and containment."
+  },
+  {
+    icon: 'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: "Consultancy",
+    description: "Expert medical consultancy services providing personalized advice and treatment plans for all respiratory and chest-related conditions."
+  },
+  {
+    icon: 'https://images.pexels.com/photos/4167541/pexels-photo-4167541.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: "Vaccination",
+    description: "Comprehensive vaccination services including flu shots, pneumonia vaccines, and other respiratory disease prevention immunizations."
+  },
+  {
+    icon: 'https://images.pexels.com/photos/4167664/pexels-photo-4167664.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: "PFT",
+    description: "Advanced Pulmonary Function Testing using state-of-the-art equipment to assess lung capacity, airflow, and overall respiratory health."
+  },
+  {
+    icon: 'https://images.pexels.com/photos/4167735/pexels-photo-4167735.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: "Laboratory",
+    description: "On-site laboratory services providing rapid and accurate testing for respiratory infections, blood work, and diagnostic analysis."
+  },
+  {
+    icon: 'https://images.pexels.com/photos/4167844/pexels-photo-4167844.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: "Radiology",
+    description: "Advanced imaging services including chest X-rays, CT scans, and other radiological procedures for accurate diagnosis and monitoring."
+  },
+  {
+    icon: 'https://images.pexels.com/photos/4167871/pexels-photo-4167871.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: "Pharmacy",
+    description: "In-house pharmacy providing prescribed medications, respiratory inhalers, and specialized treatments for convenient patient care."
   }
 ];
 

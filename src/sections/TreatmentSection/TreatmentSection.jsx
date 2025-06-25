@@ -258,7 +258,7 @@ const TreatmentSection = () => {
                     description="Explore our complete range of specialized treatments for respiratory and chest conditions. Each treatment is designed to provide personalized care for your specific needs."
                 />
 
-                <div className="treatments-grid">
+                <div className="treatments-container">
                     {treatments.map((treatment, index) => (
                         <div 
                             key={treatment.id} 
@@ -266,37 +266,57 @@ const TreatmentSection = () => {
                             className="treatment-card"
                             data-aos="fade-up" 
                             data-aos-duration="1000"
-                            data-aos-delay={index * 100}
+                            data-aos-delay={index * 50}
                         >
-                            <div className="treatment-image">
-                                <img src={treatment.image} alt={treatment.title} />
-                                <div className="treatment-overlay">
-                                    <h3>{treatment.title}</h3>
-                                </div>
-                            </div>
-                            
-                            <div className="treatment-content">
-                                <p className="treatment-description">{treatment.description}</p>
-                                
-                                <div className="treatment-details">
-                                    <div className="symptoms-section">
-                                        <h4>Common Symptoms</h4>
-                                        <ul className="symptoms-list">
-                                            {treatment.symptoms.map((symptom, idx) => (
-                                                <li key={idx}>{symptom}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    
-                                    <div className="treatment-approach">
-                                        <h4>Treatment Approach</h4>
-                                        <p>{treatment.treatment}</p>
+                            <div className="row align-items-center">
+                                <div className="col-lg-4 col-md-5">
+                                    <div className="treatment-image">
+                                        <img src={treatment.image} alt={treatment.title} />
+                                        <div className="treatment-number">
+                                            {String(index + 1).padStart(2, '0')}
+                                        </div>
                                     </div>
                                 </div>
                                 
-                                <div className="treatment-actions">
-                                    <a href="/contact" className="btn btn-primary">Book Consultation</a>
-                                    <a href="tel:+919158450788" className="btn btn-secondary">Call Now</a>
+                                <div className="col-lg-8 col-md-7">
+                                    <div className="treatment-content">
+                                        <div className="treatment-header">
+                                            <h3>{treatment.title}</h3>
+                                            <p className="treatment-description">{treatment.description}</p>
+                                        </div>
+                                        
+                                        <div className="treatment-details">
+                                            <div className="row">
+                                                <div className="col-lg-6">
+                                                    <div className="symptoms-section">
+                                                        <h4>Common Symptoms</h4>
+                                                        <ul className="symptoms-list">
+                                                            {treatment.symptoms.slice(0, 3).map((symptom, idx) => (
+                                                                <li key={idx}>{symptom}</li>
+                                                            ))}
+                                                            {treatment.symptoms.length > 3 && (
+                                                                <li className="more-symptoms">
+                                                                    +{treatment.symptoms.length - 3} more symptoms
+                                                                </li>
+                                                            )}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className="col-lg-6">
+                                                    <div className="treatment-approach">
+                                                        <h4>Treatment Approach</h4>
+                                                        <p>{treatment.treatment}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="treatment-actions">
+                                            <a href="/contact" className="btn btn-primary">Book Consultation</a>
+                                            <a href="tel:+919158450788" className="btn btn-secondary">Call Now</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
