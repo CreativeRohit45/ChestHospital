@@ -1,200 +1,401 @@
-.about-section {
-    height: 750px;
-    margin-top: 60px;
-    
-    .about-banner-text {
-        h2 {
-            font-size: 60px;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
+@use '../../sass/colors' as *;
 
-        p {
-            margin-bottom: 50px;
-            font-weight: 500;
-        }
+.about-hero-section {
+    margin-top: 120px;
+    padding: 80px 0;
+    background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(28, 102, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
     }
 
-    .mobile-banner-img{
-        display: none;
-    }
-
-
-    .about-banner-img {
-        text-align: center;
+    .about-content {
         position: relative;
+        z-index: 2;
 
-        img {
-            border-radius: 10px;
-            width: 80%;
+        .about-badge {
+            margin-bottom: 25px;
 
-            &:nth-child(2) {
-                margin-top: 120px;
+            span {
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                color: $color-white;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                display: inline-block;
+                box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3);
             }
         }
 
-        .pattern {
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            bottom: 0;
-            z-index: -1;
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: $color-black;
+            background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+
+        .lead-text {
+            font-size: 20px;
+            line-height: 1.6;
+            color: $color-gray;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .about-features {
+            margin-bottom: 40px;
+
+            .feature-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 25px;
+                padding: 20px;
+                background: $color-white;
+                border-radius: 15px;
+                box-shadow: 0 10px 25px rgba(28, 102, 255, 0.1);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 15px 35px rgba(28, 102, 255, 0.15);
+                }
+
+                .feature-icon {
+                    width: 60px;
+                    height: 60px;
+                    background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 20px;
+                    font-size: 24px;
+                }
+
+                .feature-text {
+                    h4 {
+                        color: $color-blue;
+                        font-size: 18px;
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                    }
+
+                    p {
+                        color: $color-gray;
+                        font-size: 14px;
+                        margin: 0;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+
+        .about-cta {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+            .about-stats {
+                display: flex;
+                gap: 30px;
+
+                .stat-item {
+                    text-align: center;
+
+                    h3 {
+                        font-size: 32px;
+                        font-weight: 700;
+                        color: $color-blue;
+                        margin-bottom: 5px;
+                        line-height: 1;
+                    }
+
+                    p {
+                        font-size: 14px;
+                        color: $color-gray;
+                        margin: 0;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    .about-image-section {
+        position: relative;
+        text-align: center;
+
+        .main-image {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(28, 102, 255, 0.2);
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 30px 60px rgba(28, 102, 255, 0.3);
+
+                .image-overlay {
+                    opacity: 1;
+                }
+
+                img {
+                    transform: scale(1.05);
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .image-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, rgba(28, 102, 255, 0.9) 0%, rgba(96, 132, 0, 0.9) 100%);
+                color: $color-white;
+                padding: 30px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+
+                .overlay-content {
+                    h4 {
+                        color: $color-white;
+                        font-size: 24px;
+                        font-weight: 700;
+                        margin-bottom: 10px;
+                    }
+
+                    p {
+                        color: $color-white;
+                        font-size: 16px;
+                        margin: 0;
+                        opacity: 0.9;
+                    }
+                }
+            }
+        }
+
+        .floating-card {
+            position: absolute;
+            top: 30px;
+            right: -20px;
+            background: $color-white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(28, 102, 255, 0.2);
+            z-index: 3;
+            animation: float 3s ease-in-out infinite;
+
+            .card-content {
+                display: flex;
+                align-items: center;
+
+                .card-icon {
+                    width: 50px;
+                    height: 50px;
+                    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 15px;
+                    font-size: 20px;
+                }
+
+                .card-text {
+                    h5 {
+                        color: $color-blue;
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                    }
+
+                    p {
+                        color: $color-gray;
+                        font-size: 12px;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
     }
 }
 
 // Mobile Responsive
 @media (max-width: 575px) {
-    .about-section {
-        text-align: center;
-        height: 100%;
-        padding-top: 70px;
-        margin-top: 40px;
+    .about-hero-section {
+        margin-top: 100px;
+        padding: 50px 0;
 
-        .about-banner-text {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .about-content {
+            margin-bottom: 40px;
 
-            .theme-btn{
-                text-align: left;
+            h1 {
+                font-size: 32px;
+                margin-bottom: 20px;
             }
 
-            h2 {
-                font-size: 40px;
-                margin-bottom: 15px;
+            .lead-text {
+                font-size: 16px;
+                margin-bottom: 30px;
             }
 
-            p {
-                text-align: left;
-                margin-top: 20px;
-                margin-bottom: 25px;
-            }
-        }
+            .about-features {
+                margin-bottom: 30px;
 
-        .mobile-banner-img{
-            width: 80%;
-            display: flex;
+                .feature-item {
+                    padding: 15px;
+                    margin-bottom: 15px;
 
-            img{
-                border-radius: 10px;
-            }
-        }
+                    .feature-icon {
+                        width: 50px;
+                        height: 50px;
+                        margin-right: 15px;
+                        font-size: 20px;
+                    }
 
-        .about-banner-img {
-            display: none;
-            img {
-                &:nth-child(2) {
-                    margin-top: 10px;
+                    .feature-text {
+                        h4 {
+                            font-size: 16px;
+                        }
+
+                        p {
+                            font-size: 13px;
+                        }
+                    }
                 }
+            }
+
+            .about-cta {
+                flex-direction: column;
+                gap: 25px;
+                align-items: flex-start;
+
+                .about-stats {
+                    gap: 20px;
+
+                    .stat-item {
+                        h3 {
+                            font-size: 24px;
+                        }
+
+                        p {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .about-image-section {
+            .main-image {
+                img {
+                    height: 300px;
+                }
+
+                .image-overlay {
+                    opacity: 1;
+                    background: rgba(28, 102, 255, 0.8);
+
+                    .overlay-content {
+                        h4 {
+                            font-size: 18px;
+                        }
+
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            .floating-card {
+                position: static;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
             }
         }
     }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .about-section {
-        text-align: center;
-        height: 100%;
-        padding-top: 70px;
+    .about-hero-section {
+        margin-top: 110px;
+        padding: 60px 0;
 
-        .about-banner-text {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h2 {
-                font-size: 40px;
-                margin-bottom: 15px;
+        .about-content {
+            h1 {
+                font-size: 36px;
             }
 
-            p {
-                margin-top: 20px;
-                margin-bottom: 25px;
+            .lead-text {
+                font-size: 18px;
+            }
+
+            .about-cta {
+                flex-direction: column;
+                gap: 30px;
+                align-items: flex-start;
             }
         }
 
-        .about-banner-img {
-            display: none;
-            img {
-                max-width: 170px;
-                &:nth-child(2) {
-                    margin-top: 10px;
-                }
-            }
-        }
-
-        .mobile-banner-img{
-            width: 80%;
-            display: flex;
-
-            img{
-                border-radius: 10px;
+        .about-image-section {
+            .main-image img {
+                height: 400px;
             }
         }
     }
 }
 
-// Medium Responsive
 @media (min-width: 768px) and (max-width: 991px) {
-    .about-section {
-        text-align: center;
-        height: 100%;
-        padding: 100px 0;
-
-        .about-banner-text {
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h2 {
+    .about-hero-section {
+        .about-content {
+            h1 {
                 font-size: 40px;
-                margin-bottom: 10px;
             }
 
-            p {
-                font-size: 16px;
-                margin-top: 20px;
-                margin-bottom: 20px;
+            .about-cta {
+                gap: 30px;
             }
         }
 
-        .about-banner-img{
-            margin-top: 20px;
-            display: none;
-            
-            img{
-                border-radius: 10px;
-            }
-        }
-
-        .mobile-banner-img{
-            width: 80%;
-            display: flex;
-
-            img{
-                border-radius: 10px;
-            }
-        }
-    }
-}
-
-// Large Responsive
-@media (min-width: 992px) and (max-width: 1199px) {
-    .about-section {
-        height: 100%;
-        padding: 100px 0;
-
-        .about-banner-img {
-            img {
-                max-width: 510px;
+        .about-image-section {
+            .main-image img {
+                height: 450px;
             }
         }
     }

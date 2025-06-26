@@ -1,39 +1,147 @@
 @use './../../sass/colors' as *;
 
 .priority-section {
-    padding-bottom: 100px;
+    padding: 100px 0;
+    background: $color-white;
     
-    .priority-img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        img {
-            width: 80%;
-            border-radius: 10px;
-        }
-
-        &::before {
-            position: absolute;
-            content: "";
-            width: 10%;
-            height: 10%;
-            top: -12%;
-            left: 50%;
-            background: #DBEFFA;
-            border-radius: 20px;
-        }
-    }
-
-    .priority-text {
-        max-width: 700px;
-        margin-bottom: 30px;
-
+    .priority-header {
+        text-align: center;
+        margin-bottom: 80px;
+        
         .section-title {
-            margin-bottom: 30px;
-
+            margin-bottom: 0;
+            
             h2 {
                 max-width: inherit;
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+    }
+    
+    .priority-content {
+        .priority-image {
+            position: relative;
+            text-align: center;
+            
+            img {
+                width: 100%;
+                max-width: 500px;
+                height: 600px;
+                object-fit: cover;
+                border-radius: 25px;
+                box-shadow: 0 20px 40px rgba(28, 102, 255, 0.2);
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 30px 60px rgba(28, 102, 255, 0.3);
+                }
+            }
+            
+            .image-badge {
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                background: $color-white;
+                padding: 25px;
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(28, 102, 255, 0.2);
+                text-align: center;
+                
+                .badge-content {
+                    h4 {
+                        color: $color-blue;
+                        font-size: 32px;
+                        font-weight: 700;
+                        margin-bottom: 5px;
+                        line-height: 1;
+                    }
+                    
+                    p {
+                        color: $color-gray;
+                        font-size: 12px;
+                        font-weight: 600;
+                        margin: 0;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+        
+        .priority-features {
+            padding-left: 50px;
+            
+            .features-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 40px;
+                
+                .feature-card {
+                    display: flex;
+                    align-items: flex-start;
+                    padding: 25px;
+                    background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+                    border-radius: 20px;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                    
+                    &:hover {
+                        transform: translateY(-3px);
+                        border-color: $color-blue;
+                        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.15);
+                    }
+                    
+                    .feature-icon {
+                        width: 60px;
+                        height: 60px;
+                        background: $color-white;
+                        border-radius: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 20px;
+                        font-size: 24px;
+                        box-shadow: 0 5px 15px rgba(28, 102, 255, 0.1);
+                        flex-shrink: 0;
+                    }
+                    
+                    .feature-content {
+                        h4 {
+                            color: $color-blue;
+                            font-size: 20px;
+                            font-weight: 600;
+                            margin-bottom: 10px;
+                        }
+                        
+                        p {
+                            color: $color-gray;
+                            font-size: 15px;
+                            margin: 0;
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+            
+            .priority-cta {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                
+                .priority-note {
+                    p {
+                        color: $color-gray;
+                        font-size: 14px;
+                        font-style: italic;
+                        margin: 0;
+                        line-height: 1.4;
+                        max-width: 200px;
+                    }
+                }
             }
         }
     }
@@ -42,26 +150,78 @@
 // Mobile Responsive
 @media (max-width: 575px) {
     .priority-section {
-        padding-bottom: 20px;
-
-        .priority-img {
-            text-align: left;
-
-            &::before {
-                display: none;
-            }
-
-            img{
-                width: 90%;
-                margin-bottom: 10px;
-            }
+        padding: 50px 0;
+        
+        .priority-header {
+            margin-bottom: 40px;
         }
-
-        .priority-text {
-            margin-top: 10px;
-
-            .theme-btn {
-                margin-top: 20px;
+        
+        .priority-content {
+            .priority-image {
+                margin-bottom: 40px;
+                
+                img {
+                    height: 400px;
+                }
+                
+                .image-badge {
+                    bottom: 20px;
+                    right: 20px;
+                    padding: 20px;
+                    
+                    .badge-content {
+                        h4 {
+                            font-size: 24px;
+                        }
+                        
+                        p {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+            
+            .priority-features {
+                padding-left: 0;
+                
+                .features-grid {
+                    gap: 20px;
+                    margin-bottom: 30px;
+                    
+                    .feature-card {
+                        padding: 20px;
+                        
+                        .feature-icon {
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 15px;
+                            font-size: 20px;
+                        }
+                        
+                        .feature-content {
+                            h4 {
+                                font-size: 16px;
+                            }
+                            
+                            p {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                
+                .priority-cta {
+                    flex-direction: column;
+                    gap: 20px;
+                    align-items: flex-start;
+                    
+                    .priority-note {
+                        p {
+                            max-width: 100%;
+                            text-align: center;
+                        }
+                    }
+                }
             }
         }
     }
@@ -69,72 +229,44 @@
 
 @media (min-width: 576px) and (max-width: 767px) {
     .priority-section {
-        padding-bottom: 70px;
-
-        .priority-img {
-            margin-right: 0;
-            text-align: center;
-
-            &::before {
-                display: none;
-            }
-        }
-
-        .priority-text {
-            .theme-btn {
-                margin-top: 0;
-            }
-        }
-    }
-}
-
-// Medium Device Responsive
-@media (min-width: 768px) and (max-width: 991px) {
-    .priority-section {
-        padding-bottom: 70px;
-
-        .priority-img {
-            margin-right: 20;
-            text-align: center;
-
-            &::before {
-                display: none;
+        padding: 70px 0;
+        
+        .priority-content {
+            .priority-image {
+                margin-bottom: 40px;
+                
+                img {
+                    height: 450px;
+                }
             }
             
-            img{
-                width: 95%;
-            }
-        }
-
-        .priority-text {
-            .theme-btn {
-                margin-top: 0;
-            }
-        }
-    }
-}
-
-// Medium Device Responsive 
-@media (min-width: 991px) and (max-width: 1199px) {
-    .priority-section {
-        padding-bottom: 70px;
-        padding-top: 0px;
-
-        .priority-img {
-            &::before {
-                display: none;
+            .priority-features {
+                padding-left: 0;
+                
+                .priority-cta {
+                    flex-direction: column;
+                    gap: 25px;
+                    align-items: flex-start;
+                }
             }
         }
     }
 }
 
-// Large Device Responsive
-@media (min-width: 1200px) and (max-width: 1800px) {
+@media (min-width: 768px) and (max-width: 991px) {
     .priority-section {
-        .priority-img {
-            &::before {
-                display: none;
+        padding: 80px 0;
+        
+        .priority-content {
+            .priority-image {
+                img {
+                    height: 500px;
+                }
+            }
+            
+            .priority-features {
+                padding-left: 30px;
             }
         }
     }
-} 
+}

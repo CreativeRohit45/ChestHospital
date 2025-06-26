@@ -12,7 +12,7 @@ const Appointment = () => {
     return (
         <section className='appointment-section pb-70' data-aos="fade-up" data-aos-duration="2000">
             <div className="container">
-                <div className="row align-items-center">
+                <div className="row align-items-center justify-content-center">
                     <div className="col-lg-10 col-md-6">
                         <div className="google-map">
                             <iframe title='map' src={mapLink}></iframe>
@@ -21,17 +21,6 @@ const Appointment = () => {
                                 <AiFillHome />
                                 <p> Office Number. 017, First floor, "A" Building Kolte Patil Downtown City Vista, Pune</p>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-7 col-md-6">
-                        <div className="appointment-form-area">
-                            <SectionTitle 
-                            subTitle="BOOK APPOINTMENT"
-                            title="Care at Our Chest Clinic is a Breath of Fresh Air"
-                            description="Take the first step toward better respiratory health by scheduling an appointment with our expert pulmonologist today. Whether you're experiencing symptoms or simply need a check-up, we’re here to provide compassionate and personalized care tailored to your needs.
-Book your appointment now and breathe easier with our specialized care."/>
-
-                            <ContactForm />
                         </div>
                     </div>
                 </div>

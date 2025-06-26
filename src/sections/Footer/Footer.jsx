@@ -11,29 +11,26 @@ const Footer = () => {
 
     const footerMenu = [
         {
+            'name': 'Home',
+            'link': '/'
+        },
+        {
             'name': 'About Us',
-            'link': '/'
+            'link': '/about'
         },
         {
-            'name': 'Chest Services',
-            'link': '/'
+            'name': 'Services',
+            'link': '/singleservice'
         },
         {
-            'name': 'Blogs',
-            'link': '/'
+            'name': 'Treatments',
+            'link': '/treatments'
         },
+        
         {
-            'name': 'FAQs',
-            'link': '/'
+            'name': 'Contact Us',
+            'link': '/contact'
         },
-        {
-            'name': 'Terms of Use',
-            'link': '/'
-        },
-        {
-            'name': 'Privacy Policy',
-            'link': '/'
-        }
     ];
 
     const footerContacts = [

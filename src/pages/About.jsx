@@ -12,11 +12,11 @@ const About = () => {
     return (
         <>
             <Navbar />
+            <Team />
             <AboutBanner />
             <Priority />
-            <Safety />
             <Gallery />
-            <Team />
+            <Safety />
             <Faq />
             <Footer />
         </>

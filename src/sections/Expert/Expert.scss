@@ -2,61 +2,241 @@
 
 .expert-section {
     padding: 100px 0;
+    background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+    position: relative;
+    overflow: hidden;
 
-    .section-title {
-        margin-bottom: 40px;
-
-        h2 {
-            max-width: inherit;
-        }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(96, 132, 0, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
     }
 
-    .expert-text {
-        ul {
-            padding: 0;
-            margin: 0;
-
-            li {
-                list-style: none;
-                margin-bottom: 15px;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 1.6;
-
-                svg {
-                    color: $color-blue;
-                    margin-right: 15px;
-                    top: -1px;
-                    position: relative;
-                    font-size: 18px;
-                }
+    .expert-header {
+        text-align: center;
+        margin-bottom: 80px;
+        
+        .section-title {
+            margin-bottom: 0;
+            
+            h2 {
+                max-width: inherit;
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
         }
     }
 
-    .expert-img {
-        text-align: center;
-        position: relative;
-        z-index: 1;
+    .expert-content {
+        .expert-info {
+            .expertise-list {
+                margin-bottom: 50px;
 
-        &::before {
-            position: absolute;
-            content: "";
-            width: 45%;
-            height: 125%;
-            top: -12%;
-            right: 0%;
-            background: #FADBE2;
-            z-index: -1;
-            border-radius: 20px;
+                .expertise-item {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 30px;
+                    padding: 25px;
+                    background: $color-white;
+                    border-radius: 20px;
+                    box-shadow: 0 10px 25px rgba(28, 102, 255, 0.1);
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                        border-color: $color-blue;
+                        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.15);
+                    }
+
+                    .expertise-icon {
+                        width: 50px;
+                        height: 50px;
+                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                        border-radius: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 20px;
+                        flex-shrink: 0;
+
+                        svg {
+                            color: $color-white;
+                            font-size: 20px;
+                        }
+                    }
+
+                    .expertise-content {
+                        h4 {
+                            color: $color-blue;
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: 8px;
+                            line-height: 1.3;
+                        }
+
+                        p {
+                            color: $color-gray;
+                            font-size: 14px;
+                            margin: 0;
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+
+            .achievements-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+
+                .achievement-item {
+                    background: $color-white;
+                    padding: 25px;
+                    border-radius: 15px;
+                    text-align: center;
+                    box-shadow: 0 10px 25px rgba(28, 102, 255, 0.1);
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.15);
+                    }
+
+                    h3 {
+                        color: $color-blue;
+                        font-size: 32px;
+                        font-weight: 700;
+                        margin-bottom: 8px;
+                        line-height: 1;
+                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                    }
+
+                    p {
+                        color: $color-gray;
+                        font-size: 12px;
+                        font-weight: 600;
+                        margin: 0;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                }
+            }
         }
 
-        img {
-            border-radius: 15px;
-            max-width: 100%;
-            height: auto;
-            box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
+        .expert-image-section {
+            position: relative;
+            text-align: center;
+
+            .expert-image {
+                position: relative;
+                display: inline-block;
+
+                img {
+                    width: 100%;
+                    max-width: 450px;
+                    height: 550px;
+                    object-fit: cover;
+                    border-radius: 25px;
+                    box-shadow: 0 20px 40px rgba(28, 102, 255, 0.2);
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 30px 60px rgba(28, 102, 255, 0.3);
+                    }
+                }
+
+                .image-decoration {
+                    position: absolute;
+                    top: -30px;
+                    right: -30px;
+                    z-index: -1;
+
+                    .decoration-circle {
+                        width: 120px;
+                        height: 120px;
+                        background: linear-gradient(135deg, $color-green 0%, $color-blue 100%);
+                        border-radius: 50%;
+                        opacity: 0.2;
+                    }
+
+                    .decoration-pattern {
+                        position: absolute;
+                        top: 60px;
+                        left: 60px;
+                        width: 80px;
+                        height: 80px;
+                        background: radial-gradient(circle, $color-blue 2px, transparent 2px);
+                        background-size: 20px 20px;
+                        opacity: 0.3;
+                    }
+                }
+            }
+
+            .expert-badge {
+                position: absolute;
+                bottom: 30px;
+                left: 30px;
+                background: $color-white;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(28, 102, 255, 0.2);
+                animation: float 3s ease-in-out infinite;
+
+                .badge-content {
+                    display: flex;
+                    align-items: center;
+
+                    .badge-icon {
+                        width: 50px;
+                        height: 50px;
+                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                        border-radius: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 15px;
+                        font-size: 20px;
+                    }
+
+                    .badge-text {
+                        h5 {
+                            color: $color-blue;
+                            font-size: 16px;
+                            font-weight: 600;
+                            margin-bottom: 3px;
+                        }
+
+                        p {
+                            color: $color-gray;
+                            font-size: 12px;
+                            margin: 0;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
         }
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
     }
 }
 
@@ -65,27 +245,110 @@
     .expert-section {
         padding: 50px 0;
 
-        .expert-text {
-            margin-bottom: 30px;
-            
-            ul {
-                margin-bottom: 20px;
-                
-                li {
-                    margin-bottom: 12px;
-                    font-size: 14px;
+        .expert-header {
+            margin-bottom: 40px;
+        }
 
-                    svg {
-                        margin-right: 10px;
-                        font-size: 16px;
+        .expert-content {
+            .expert-info {
+                margin-bottom: 40px;
+
+                .expertise-list {
+                    margin-bottom: 30px;
+
+                    .expertise-item {
+                        padding: 20px;
+                        margin-bottom: 20px;
+
+                        .expertise-icon {
+                            width: 40px;
+                            height: 40px;
+                            margin-right: 15px;
+
+                            svg {
+                                font-size: 16px;
+                            }
+                        }
+
+                        .expertise-content {
+                            h4 {
+                                font-size: 16px;
+                            }
+
+                            p {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+
+                .achievements-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 15px;
+
+                    .achievement-item {
+                        padding: 20px;
+
+                        h3 {
+                            font-size: 24px;
+                        }
+
+                        p {
+                            font-size: 10px;
+                        }
                     }
                 }
             }
-        }
 
-        .expert-img {
-            &::before {
-                display: none;
+            .expert-image-section {
+                .expert-image {
+                    img {
+                        height: 400px;
+                    }
+
+                    .image-decoration {
+                        top: -20px;
+                        right: -20px;
+
+                        .decoration-circle {
+                            width: 80px;
+                            height: 80px;
+                        }
+
+                        .decoration-pattern {
+                            top: 40px;
+                            left: 40px;
+                            width: 60px;
+                            height: 60px;
+                            background-size: 15px 15px;
+                        }
+                    }
+                }
+
+                .expert-badge {
+                    bottom: 20px;
+                    left: 20px;
+                    padding: 15px;
+
+                    .badge-content {
+                        .badge-icon {
+                            width: 40px;
+                            height: 40px;
+                            margin-right: 12px;
+                            font-size: 16px;
+                        }
+
+                        .badge-text {
+                            h5 {
+                                font-size: 14px;
+                            }
+
+                            p {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -93,54 +356,41 @@
 
 @media (min-width: 576px) and (max-width: 767px) {
     .expert-section {
-        padding: 60px 0;
-
-        .expert-text {
-            margin-bottom: 30px;
-        }
-
-        .expert-img {
-            &::before {
-                display: none;
-            }
-        }
-    }
-}
-
-// Medium Devices Responsive
-@media (min-width: 768px) and (max-width: 991px) {
-    .expert-section {
         padding: 70px 0;
 
-        .expert-img {
-            &::before {
-                right: -5%;
-                width: 50%;
+        .expert-content {
+            .expert-info {
+                margin-bottom: 40px;
+
+                .achievements-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            .expert-image-section {
+                .expert-image img {
+                    height: 450px;
+                }
             }
         }
     }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 991px) {
     .expert-section {
         padding: 80px 0;
 
-        .expert-img {
-            &::before {
-                right: -5%;
-                width: 50%;
+        .expert-content {
+            .expert-info {
+                .achievements-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
             }
-        }
-    }
-}
 
-// Large Device Responsive
-@media (min-width: 1200px) {
-    .expert-section {
-        .expert-img {
-            &::before {
-                right: -5%;
-                width: 50%;
+            .expert-image-section {
+                .expert-image img {
+                    height: 500px;
+                }
             }
         }
     }

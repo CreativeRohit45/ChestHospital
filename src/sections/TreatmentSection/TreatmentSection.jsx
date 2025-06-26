@@ -2,6 +2,23 @@ import React, { useEffect } from 'react';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import './TreatmentSection.scss';
 import { useLocation } from 'react-router-dom';
+import imgOne from '../../assets/treatment/img1.webp';
+import imgTwo from '../../assets/treatment/img2.jpg';
+import imgThree from '../../assets/treatment/img3.png';
+import imgFour from '../../assets/treatment/img4.jpg';
+import imgFive from '../../assets/treatment/img5.webp';
+import imgSix from '../../assets/treatment/img6.png';
+import imgSeven from '../../assets/treatment/img7.webp';
+import imgEight from '../../assets/treatment/img8.jpg';
+import imgNine from '../../assets/treatment/img9.webp';
+import imgTen from '../../assets/treatment/img10.webp';
+import imgEleven from '../../assets/treatment/img11.webp';
+import imgTwelve from '../../assets/treatment/img12.webp';
+import imgThirteen from '../../assets/treatment/img13.png';
+import imgFourteen from '../../assets/treatment/img14.jpeg';
+import imgFifteen from '../../assets/treatment/img15.webp';
+import imgSixteen from '../../assets/treatment/img16.jpg';
+
 
 const TreatmentSection = () => {
     const location = useLocation();
@@ -26,7 +43,7 @@ const TreatmentSection = () => {
         {
             id: 'asthma-and-allergy',
             title: 'Asthma & Allergy',
-            image: 'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgOne,
             description: 'Comprehensive care for asthma and allergic conditions affecting your respiratory system.',
             symptoms: [
                 'Wheezing or whistling sound when breathing',
@@ -40,7 +57,7 @@ const TreatmentSection = () => {
         {
             id: 'branchoscopy',
             title: 'Bronchoscopy',
-            image: 'https://images.pexels.com/photos/4167541/pexels-photo-4167541.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgTwo,
             description: 'Advanced diagnostic procedure to examine airways and diagnose lung conditions.',
             symptoms: [
                 'Persistent cough with unknown cause',
@@ -54,7 +71,7 @@ const TreatmentSection = () => {
         {
             id: 'bronchitis',
             title: 'Bronchitis',
-            image: 'https://images.pexels.com/photos/4167664/pexels-photo-4167664.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgThree,
             description: 'Treatment for acute and chronic bronchitis with comprehensive respiratory care.',
             symptoms: [
                 'Persistent cough with mucus production',
@@ -68,7 +85,7 @@ const TreatmentSection = () => {
         {
             id: 'chest-diseases',
             title: 'Chest Diseases',
-            image: 'https://images.pexels.com/photos/4167735/pexels-photo-4167735.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgFour,
             description: 'Comprehensive diagnosis and management of various chest-related conditions.',
             symptoms: [
                 'Chest pain or discomfort',
@@ -82,7 +99,7 @@ const TreatmentSection = () => {
         {
             id: 'chest-infection',
             title: 'Chest Infection',
-            image: 'https://images.pexels.com/photos/4167844/pexels-photo-4167844.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgFive,
             description: 'Expert treatment for various types of chest infections and respiratory complications.',
             symptoms: [
                 'Productive cough with colored sputum',
@@ -96,7 +113,7 @@ const TreatmentSection = () => {
         {
             id: 'copd',
             title: 'COPD',
-            image: 'https://images.pexels.com/photos/4167871/pexels-photo-4167871.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgSix,
             description: 'Comprehensive management of Chronic Obstructive Pulmonary Disease.',
             symptoms: [
                 'Progressive shortness of breath',
@@ -110,7 +127,7 @@ const TreatmentSection = () => {
         {
             id: 'cancer-diagnosis',
             title: 'Cancer Diagnosis',
-            image: 'https://images.pexels.com/photos/4167901/pexels-photo-4167901.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgSeven,
             description: 'Advanced diagnostic services for early detection of lung and thoracic cancers.',
             symptoms: [
                 'Persistent cough that worsens',
@@ -124,7 +141,7 @@ const TreatmentSection = () => {
         {
             id: 'diagnostic-rooms',
             title: 'Diagnostic Rooms',
-            image: 'https://images.pexels.com/photos/4167932/pexels-photo-4167932.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgEight,
             description: 'State-of-the-art diagnostic facilities for comprehensive respiratory evaluation.',
             symptoms: [
                 'Need for pulmonary function testing',
@@ -138,7 +155,7 @@ const TreatmentSection = () => {
         {
             id: 'ild-and-pulmonary-fibrosis',
             title: 'ILD & Pulmonary Fibrosis',
-            image: 'https://images.pexels.com/photos/4167963/pexels-photo-4167963.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgNine,
             description: 'Specialized care for interstitial lung disease and pulmonary fibrosis.',
             symptoms: [
                 'Progressive shortness of breath',
@@ -152,7 +169,7 @@ const TreatmentSection = () => {
         {
             id: 'pleural-effusion',
             title: 'Pleural Effusion',
-            image: 'https://images.pexels.com/photos/4167994/pexels-photo-4167994.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgTen,
             description: 'Expert diagnosis and treatment of fluid accumulation around the lungs.',
             symptoms: [
                 'Shortness of breath',
@@ -166,7 +183,7 @@ const TreatmentSection = () => {
         {
             id: 'post-covid-care',
             title: 'Post Covid Care',
-            image: 'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgEleven,
             description: 'Comprehensive rehabilitation for lingering post-COVID respiratory symptoms.',
             symptoms: [
                 'Persistent shortness of breath',
@@ -180,7 +197,7 @@ const TreatmentSection = () => {
         {
             id: 'pneumonia',
             title: 'Pneumonia',
-            image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgTwelve,
             description: 'Expert care for pneumonia with rapid diagnosis and effective treatment.',
             symptoms: [
                 'High fever and chills',
@@ -194,7 +211,7 @@ const TreatmentSection = () => {
         {
             id: 'pulmonary-function-tests',
             title: 'Pulmonary Function Tests',
-            image: 'https://images.pexels.com/photos/4386468/pexels-photo-4386468.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgThirteen,
             description: 'Comprehensive lung function testing for accurate respiratory assessment.',
             symptoms: [
                 'Unexplained shortness of breath',
@@ -208,7 +225,7 @@ const TreatmentSection = () => {
         {
             id: 'sleep-related-disorder',
             title: 'Sleep Related Disorder',
-            image: 'https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgFourteen,
             description: 'Comprehensive evaluation and treatment of sleep-related breathing disorders.',
             symptoms: [
                 'Loud snoring',
@@ -222,7 +239,7 @@ const TreatmentSection = () => {
         {
             id: 'tobacco-and-smoking-cessation',
             title: 'Tobacco & Smoking Cessation',
-            image: 'https://images.pexels.com/photos/4386470/pexels-photo-4386470.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgFifteen,
             description: 'Comprehensive smoking cessation program with counseling and support.',
             symptoms: [
                 'Desire to quit smoking',
@@ -236,7 +253,7 @@ const TreatmentSection = () => {
         {
             id: 'tuberculosis-treatment',
             title: 'Tuberculosis Treatment',
-            image: 'https://images.pexels.com/photos/4386471/pexels-photo-4386471.jpeg?auto=compress&cs=tinysrgb&w=800',
+            image: imgSixteen,
             description: 'Comprehensive TB diagnosis and treatment following national guidelines.',
             symptoms: [
                 'Persistent cough lasting weeks',
@@ -248,6 +265,7 @@ const TreatmentSection = () => {
             treatment: 'We provide accurate TB diagnosis using advanced testing methods and comprehensive treatment following national TB guidelines.'
         }
     ];
+
 
     return (
         <section className='treatment-section pt-100 pb-70' data-aos="fade-up" data-aos-duration="2000">

@@ -29,6 +29,24 @@ const Testimonial = () => {
         },
         {
             img: imgOne,
+            name: 'Samarth Sankalp',
+            description: 'The best doctor you can go so far in Pune. Physician who feels like home, going to doctor was never so comfortable.. now its never to scary and the improvement within months was so far. Thank you Dr. Pandharkar.',
+            ratings: [<AiFillStar key={1} />, <AiFillStar key={2} />, <AiFillStar key={3} />, <AiFillStar key={4} />, <AiFillStar key={5} />]
+        },
+        {
+            img: imgOne,
+            name: 'Alisha Sinha',
+            description: "Dr. Pandharkar is the best doctor for the chest related issues. Last year my mother was diagnosed with TB we got her treated at some other city but can’t see any improvement. Later on we consulted Dr. Pandharkar. He took good care of my mother’s case. He didn’t recommend any expensive medicines or tests. He always gave adequate amount of time for our consultations. I highly recommend Dr. Pandharkar for all chest related issues. All the staffs at the clinic are also of good nature and they took good care of us.",
+            ratings: [<AiFillStar key={1} />, <AiFillStar key={2} />, <AiFillStar key={3} />, <AiFillStar key={4} />, <AiFillStar key={5} />]
+        },
+        {
+            img: imgOne,
+            name: 'Somnath Shirke',
+            description: `I can confidently say that Dr. Pandharkar is one of the most knowledgeable doctors out there today. Also the staff is good and the clinic is highly maintained. The best doctor with best facilities I had gone through. Thank you doctor.`,
+            ratings: [<AiFillStar key={1} />, <AiFillStar key={2} />, <AiFillStar key={3} />, <AiFillStar key={4} />, <AiFillStar key={5} />]
+        },
+        {
+            img: imgOne,
             name: 'Sidhika Jain',
             description: 'Excellent service and professional care. The doctor was very thorough in explaining my condition and the treatment plan. Highly recommended for anyone with respiratory issues.',
             ratings: [<AiFillStar key={1} />, <AiFillStar key={2} />, <AiFillStar key={3} />, <AiFillStar key={4} />, <AiFillStar key={5} />]

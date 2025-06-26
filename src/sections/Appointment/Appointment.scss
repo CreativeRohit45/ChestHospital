@@ -1,6 +1,7 @@
 @use './../../sass/colors' as *;
 
 .appointment-section {
+    margin-top: 20px;
     .section-title {
         margin-bottom: 40px;
     }
@@ -8,7 +9,7 @@
     .google-map {
         height: 600px;
         position: relative;
-        margin-bottom: 30px;
+        margin: 0 auto 30px;
         border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);

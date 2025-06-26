@@ -31,7 +31,7 @@ const Services = () => {
                     <div className="col-lg-6">
                         <SectionTitle 
                             title="Feel amazing about your respiratory health" 
-                            subTitle="Services" 
+                            subTitle="Treatments" 
                         />
                     </div>
                     <div className="col-lg-6">
