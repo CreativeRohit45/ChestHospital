@@ -1,9 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './AboutBanner.scss';
 import bannerOne from '../../assets/about/banner/2nd.jpg'
 
 const AboutBanner = () => {
+    const navigate = useNavigate();
+
+    const handleBookAppointment = () => {
+        navigate('/contact');
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+            const contactForm = document.querySelector('.contact-form-wrapper');
+            if (contactForm) {
+                contactForm.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }, 100);
+    };
+
     return (
         <section className='about-hero-section' data-aos="fade-up" data-aos-duration="2000">
             <div className="container">
@@ -40,7 +56,24 @@ const AboutBanner = () => {
 
                             <div className="about-cta">
                                 <div className="theme-btn">
-                                    <Link to='/contact'>Schedule Consultation</Link>
+                                    <button onClick={handleBookAppointment} style={{background: 'none', border: 'none', padding: 0}}>
+                                        <span style={{
+                                            background: 'linear-gradient(135deg, #1C66FF 0%, #608400 100%)',
+                                            color: '#ffffff',
+                                            padding: '16px 32px',
+                                            textDecoration: 'none',
+                                            borderRadius: '12px',
+                                            transition: 'all 0.3s ease',
+                                            border: '2px solid transparent',
+                                            fontSize: '16px',
+                                            fontWeight: '600',
+                                            display: 'inline-block',
+                                            boxShadow: '0 8px 25px rgba(28, 102, 255, 0.3)',
+                                            cursor: 'pointer'
+                                        }}>
+                                            Schedule Consultation
+                                        </span>
+                                    </button>
                                 </div>
                                 <div className="about-stats">
                                     <div className="stat-item">

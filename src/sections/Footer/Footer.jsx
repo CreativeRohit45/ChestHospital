@@ -35,16 +35,28 @@ const Footer = () => {
 
     const footerContacts = [
         {
-        title: 'Phone Number',
-        info: ['+91-9158450788', ' +91-8766040262'],
-        icon: call
+            title: 'Phone Number',
+            info: ['+91-9158450788', ' +91-8766040262'],
+            icon: call,
+            isPhone: true
         },
         {
             'title': 'Clinic Address',
             'info': 'Office Number. 017, First floor, "A" Building Kolte Patil Downtown City Vista, Pune',
-            'icon': location
+            'icon': location,
+            isLocation: true
         }
     ];
+
+    const handlePhoneClick = (phoneNumber) => {
+        window.open(`tel:${phoneNumber}`, '_self');
+    };
+
+    const handleLocationClick = () => {
+        const address = "Office Number. 017, First floor, A Building Kolte Patil Downtown City Vista, Pune";
+        const encodedAddress = encodeURIComponent(address);
+        window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+    };
 
     return (
         <footer className='pt-100'>
@@ -87,19 +99,46 @@ const Footer = () => {
                                 footerContacts.map((footerContact, index) => {
                                     return (
                                     <div className="contact-list" key={footerContact.title || index}>
-                                        <div className="contact-icon">
-                                        <img src={footerContact.icon} alt="icon" />
+                                        <div 
+                                            className="contact-icon"
+                                            onClick={() => {
+                                                if (footerContact.isPhone && Array.isArray(footerContact.info)) {
+                                                    handlePhoneClick(footerContact.info[0]);
+                                                } else if (footerContact.isLocation) {
+                                                    handleLocationClick();
+                                                }
+                                            }}
+                                            style={{
+                                                cursor: footerContact.isPhone || footerContact.isLocation ? 'pointer' : 'default'
+                                            }}
+                                        >
+                                            <img src={footerContact.icon} alt="icon" />
                                         </div>
                                         <div className="contact-text">
-                                        <p>{footerContact.title}</p>
+                                            <p>{footerContact.title}</p>
 
-                                        {Array.isArray(footerContact.info) ? (
-                                            footerContact.info.map((line, i) => (
-                                            <h5 key={i}>{line}</h5>
-                                            ))
-                                        ) : (
-                                            <h5>{footerContact.info}</h5>
-                                        )}
+                                            {Array.isArray(footerContact.info) ? (
+                                                footerContact.info.map((line, i) => (
+                                                    <h5 
+                                                        key={i}
+                                                        onClick={() => footerContact.isPhone && handlePhoneClick(line)}
+                                                        style={{
+                                                            cursor: footerContact.isPhone ? 'pointer' : 'default'
+                                                        }}
+                                                    >
+                                                        {line}
+                                                    </h5>
+                                                ))
+                                            ) : (
+                                                <h5 
+                                                    onClick={() => footerContact.isLocation && handleLocationClick()}
+                                                    style={{
+                                                        cursor: footerContact.isLocation ? 'pointer' : 'default'
+                                                    }}
+                                                >
+                                                    {footerContact.info}
+                                                </h5>
+                                            )}
                                         </div>
                                     </div>
                                     );

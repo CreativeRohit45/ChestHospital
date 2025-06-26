@@ -1,6 +1,6 @@
 import React from 'react';
 import './Banner.scss';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import icon from '../../assets/banner/icons/Calling.png';
 import bannerImg from '../../assets/banner/1.jpg';
 
@@ -11,6 +11,21 @@ import shapeThree from '../../assets/banner/vector_03.png';
 import shapeFour from '../../assets/banner/pattern.png';
 
 const Banner = () => {
+    const navigate = useNavigate();
+
+    const handleBookAppointment = () => {
+        navigate('/contact');
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+            const contactForm = document.querySelector('.contact-form-wrapper');
+            if (contactForm) {
+                contactForm.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }, 100);
+    };
 
     return (
         <section className='section-bg section-common banner-section'>
@@ -24,7 +39,26 @@ const Banner = () => {
 
                                     <div className="banner-bottom">
                                         <div className="theme-btn">
-                                            <Link to="/contact">Book an appointment</Link>
+                                            <button onClick={handleBookAppointment} style={{background: 'none', border: 'none', padding: 0}}>
+                                                <span style={{
+                                                    background: 'linear-gradient(135deg, #1C66FF 0%, #608400 100%)',
+                                                    color: '#ffffff',
+                                                    padding: '20px 25px',
+                                                    textDecoration: 'none',
+                                                    borderRadius: '12px',
+                                                    transition: 'all 0.3s ease',
+                                                    border: '2px solid transparent',
+                                                    fontSize: '16px',
+                                                    fontWeight: '600',
+                                                    display: 'inline-block',
+                                                    boxShadow: '0 8px 25px rgba(28, 102, 255, 0.3)',
+                                                    cursor: 'pointer',
+                                                    position: 'relative',
+                                                    zIndex: 10
+                                                }}>
+                                                    Book an appointment
+                                                </span>
+                                            </button>
                                         </div>
 
                                         <div className="banner-call">

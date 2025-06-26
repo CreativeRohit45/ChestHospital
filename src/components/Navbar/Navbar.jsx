@@ -1,9 +1,10 @@
 import React from 'react';
 import './Navbar.scss';
 import logo from './../../assets/image1.png';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const Navbar = () => {
+    const navigate = useNavigate();
 
     const navbarItems = [
         { id: 1, name: 'HOME', path: '/' },
@@ -13,6 +14,19 @@ const Navbar = () => {
         { id: 5, name: 'CONTACT US', path: '/contact' }
     ];
 
+    const handleBookAppointment = () => {
+        navigate('/contact');
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+            const contactForm = document.querySelector('.contact-form-wrapper');
+            if (contactForm) {
+                contactForm.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }, 100);
+    };
 
     return (    
         <div className='main-nav'>
@@ -41,7 +55,24 @@ const Navbar = () => {
                             
                             {/* Navbar Button */}
                             <div className="theme-btn">
-                                <Link to="/contact">Book appointment</Link>
+                                <button onClick={handleBookAppointment} style={{background: 'none', border: 'none', padding: 0}}>
+                                    <span style={{
+                                        background: 'linear-gradient(135deg, #1C66FF 0%, #608400 100%)',
+                                        color: '#ffffff',
+                                        padding: '16px 32px',
+                                        textDecoration: 'none',
+                                        borderRadius: '12px',
+                                        transition: 'all 0.3s ease',
+                                        border: '2px solid transparent',
+                                        fontSize: '16px',
+                                        fontWeight: '600',
+                                        display: 'inline-block',
+                                        boxShadow: '0 8px 25px rgba(28, 102, 255, 0.3)',
+                                        cursor: 'pointer'
+                                    }}>
+                                        Book appointment
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>

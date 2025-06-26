@@ -3,7 +3,7 @@
 .appointment-container {
     .contact-form {
         background: $color-white;
-        padding: 50px;
+        padding: 60px;
         border-radius: 20px;
         box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
         border: 2px solid transparent;
@@ -17,25 +17,25 @@
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
 
             label {
                 color: $color-black;
                 font-weight: 600;
                 font-size: 18px;
-                margin-bottom: 12px;
+                margin-bottom: 15px;
                 display: block;
             }
 
             .form-control {
                 width: 100%;
-                padding: 18px 24px;
+                padding: 20px 25px;
                 border: 2px solid rgba(28, 102, 255, 0.1);
                 border-radius: 12px;
                 font-size: 18px;
                 transition: all 0.3s ease;
                 background: $color-white;
-                min-height: 56px;
+                min-height: 60px;
 
                 &:focus {
                     outline: none;
@@ -59,7 +59,7 @@
             }
 
             textarea.form-control {
-                min-height: 140px;
+                min-height: 150px;
                 resize: vertical;
             }
         }
@@ -67,7 +67,7 @@
         .appointment-btn {
             background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
             color: $color-white;
-            padding: 18px 36px;
+            padding: 20px 40px;
             border: none;
             border-radius: 12px;
             font-size: 18px;
@@ -76,7 +76,7 @@
             transition: all 0.3s ease;
             width: 100%;
             box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3);
-            min-height: 56px;
+            min-height: 60px;
 
             &:hover:not(:disabled) {
                 transform: translateY(-2px);
@@ -91,8 +91,8 @@
         }
 
         .alert {
-            padding: 18px 24px;
-            margin-bottom: 30px;
+            padding: 20px 25px;
+            margin-bottom: 35px;
             border-radius: 12px;
             font-weight: 500;
             font-size: 16px;
@@ -114,14 +114,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 35px;
-            padding: 25px;
+            margin-top: 40px;
+            padding: 30px;
             background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
             border-radius: 15px;
 
             .icon {
-                width: 60px;
-                height: 60px;
+                width: 65px;
+                height: 65px;
                 margin-right: 25px;
                 background: $color-white;
                 border-radius: 50%;
@@ -131,8 +131,8 @@
                 box-shadow: 0 5px 15px rgba(28, 102, 255, 0.2);
 
                 img {
-                    width: 28px;
-                    height: 28px;
+                    width: 30px;
+                    height: 30px;
                 }
             }
 
@@ -160,46 +160,46 @@
 @media (max-width: 575px) {
     .appointment-container {
         .contact-form {
-            padding: 30px;
+            padding: 35px;
 
             .form-group {
-                margin-bottom: 25px;
+                margin-bottom: 30px;
 
                 label {
                     font-size: 16px;
                 }
 
                 .form-control {
-                    padding: 15px 18px;
+                    padding: 18px 20px;
                     font-size: 16px;
-                    min-height: 50px;
+                    min-height: 55px;
                 }
 
                 textarea.form-control {
-                    min-height: 120px;
+                    min-height: 130px;
                 }
             }
 
             .appointment-btn {
-                padding: 15px 30px;
+                padding: 18px 35px;
                 font-size: 16px;
-                min-height: 50px;
+                min-height: 55px;
             }
 
             .appointment-call {
                 flex-direction: column;
                 text-align: center;
-                padding: 20px;
+                padding: 25px;
 
                 .icon {
                     margin-right: 0;
                     margin-bottom: 15px;
-                    width: 50px;
-                    height: 50px;
+                    width: 55px;
+                    height: 55px;
 
                     img {
-                        width: 24px;
-                        height: 24px;
+                        width: 26px;
+                        height: 26px;
                     }
                 }
 
@@ -220,18 +220,20 @@
 @media (min-width: 576px) and (max-width: 767px) {
     .appointment-container {
         .contact-form {
-            padding: 40px;
+            padding: 45px;
 
             .form-group {
                 .form-control {
-                    padding: 16px 20px;
+                    padding: 19px 22px;
                     font-size: 17px;
+                    min-height: 58px;
                 }
             }
 
             .appointment-btn {
-                padding: 16px 32px;
+                padding: 19px 38px;
                 font-size: 17px;
+                min-height: 58px;
             }
         }
     }

@@ -1,10 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import priorityImg from '../../assets/experts.jpg'; 
 import './Priority.scss';
 
 const Priority = () => {
+    const navigate = useNavigate();
+
+    const handleBookAppointment = () => {
+        navigate('/contact');
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+            const contactForm = document.querySelector('.contact-form-wrapper');
+            if (contactForm) {
+                contactForm.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }, 100);
+    };
+
     const priorityFeatures = [
         {
             icon: '🎯',
@@ -76,7 +92,24 @@ const Priority = () => {
                                 
                                 <div className="priority-cta">
                                     <div className="theme-btn">
-                                        <Link to='/contact'>Experience Our Care</Link>
+                                        <button onClick={handleBookAppointment} style={{background: 'none', border: 'none', padding: 0}}>
+                                            <span style={{
+                                                background: 'linear-gradient(135deg, #1C66FF 0%, #608400 100%)',
+                                                color: '#ffffff',
+                                                padding: '16px 32px',
+                                                textDecoration: 'none',
+                                                borderRadius: '12px',
+                                                transition: 'all 0.3s ease',
+                                                border: '2px solid transparent',
+                                                fontSize: '16px',
+                                                fontWeight: '600',
+                                                display: 'inline-block',
+                                                boxShadow: '0 8px 25px rgba(28, 102, 255, 0.3)',
+                                                cursor: 'pointer'
+                                            }}>
+                                                Experience Our Care
+                                            </span>
+                                        </button>
                                     </div>
                                     <div className="priority-note">
                                         <p>Join thousands of satisfied patients who trust us with their respiratory health</p>
