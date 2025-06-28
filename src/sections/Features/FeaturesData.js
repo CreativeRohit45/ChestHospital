@@ -26,7 +26,7 @@ const featuresData = [
     id: 4,
     icon: iconFour,
     title: 'No judgment ever',
-    description: 'Whether you\'re a long-term smoker or dealing with chronic lung issues, every patient is treated with compassion and respect.'
+    description: `Whether you're a long-term smoker or dealing with chronic lung issues, every patient is treated with compassion and respect.`
   }
 ];
 
