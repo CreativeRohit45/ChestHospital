@@ -1,8 +1,8 @@
-import iconOne from '../../assets/features/1.png';
-import iconTwo from '../../assets/features/2.png';
-import iconThree from '../../assets/features/3.png';
-import iconFour from '../../assets/features/icon.png';
-import iconfive from '../../assets/features/4.png';
+import iconOne from '../../assets/symptoms/11.jpg';
+import iconTwo from '../../assets/symptoms/22.jpg';
+import iconThree from '../../assets/symptoms/33.jpg';
+import iconFour from '../../assets/symptoms/55.png';
+import iconfive from '../../assets/symptoms/77.jpeg';
 
 const ServicesData = [
   {
