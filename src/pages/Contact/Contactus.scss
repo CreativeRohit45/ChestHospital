@@ -167,10 +167,35 @@
                     p {
                         color: $color-gray;
                         font-size: 16px;
-                        margin: 0;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .emergency-phones {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        gap: 5px;
                         
-                        strong {
+                        .phone-link {
                             color: $color-blue;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            padding: 5px 10px;
+                            border-radius: 8px;
+                            background: rgba(28, 102, 255, 0.1);
+                            
+                            &:hover {
+                                background: $color-blue;
+                                color: $color-white;
+                                transform: translateY(-2px);
+                                box-shadow: 0 5px 15px rgba(28, 102, 255, 0.3);
+                            }
+                        }
+                        
+                        span {
+                            color: $color-gray;
+                            font-weight: normal;
                         }
                     }
                 }
@@ -354,6 +379,16 @@
                         p {
                             font-size: 14px;
                         }
+                        
+                        .emergency-phones {
+                            flex-direction: column;
+                            gap: 10px;
+                            
+                            .phone-link {
+                                font-size: 14px;
+                                padding: 8px 15px;
+                            }
+                        }
                     }
                 }
             }
@@ -394,6 +429,18 @@
         .timing-wrapper {
             .timing-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timing-note {
+                .note-content {
+                    .note-text {
+                        .emergency-phones {
+                            .phone-link {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

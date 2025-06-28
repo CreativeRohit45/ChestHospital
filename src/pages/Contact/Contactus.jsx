@@ -18,6 +18,10 @@ const Contactus = () => {
         { day: 'Sunday', time: 'Closed', closed: true }
     ];
 
+    const handlePhoneClick = (phoneNumber) => {
+        window.open(`tel:${phoneNumber}`, '_self');
+    };
+
     return (
         <>
             <Navbar />
@@ -65,7 +69,22 @@ const Contactus = () => {
                                 </div>
                                 <div className="note-text">
                                     <h5>Need Emergency Care?</h5>
-                                    <p>For urgent respiratory issues, please call us at <strong>+91-9158450788</strong></p>
+                                    <p>For urgent respiratory issues, please call us at:</p>
+                                    <div className="emergency-phones">
+                                        <strong 
+                                            onClick={() => handlePhoneClick('+919158450788')}
+                                            className="phone-link"
+                                        >
+                                            +91-9158450788
+                                        </strong>
+                                        <span> or </span>
+                                        <strong 
+                                            onClick={() => handlePhoneClick('+918766040262')}
+                                            className="phone-link"
+                                        >
+                                            +91-8766040262
+                                        </strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
