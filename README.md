@@ -1,16 +1,100 @@
-<<<<<<< HEAD
-# ChestHospital
-=======
-# React + Vite
+# Dr. Pandharkar Chest Clinic
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive website for Dr. Pandharkar's Chest Clinic built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Responsive Design**: Optimized for all devices (mobile, tablet, desktop)
+- **Modern UI/UX**: Clean, professional design with smooth animations
+- **Appointment Booking**: Online appointment scheduling system
+- **Admin Panel**: Secure admin dashboard for managing appointments
+- **Service Information**: Comprehensive information about respiratory treatments
+- **Contact Integration**: Easy contact and location information
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 3c4e554 (First Commit)
+- **Frontend**: React 19, Vite
+- **Styling**: SCSS with custom design system
+- **Icons**: React Icons
+- **Animations**: AOS (Animate On Scroll)
+- **Routing**: React Router DOM
+- **HTTP Client**: Axios
+- **Carousel**: React Slick
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd hospital-frontend
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Build for production
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── sections/           # Section components for pages
+├── assets/             # Images and static assets
+├── sass/               # SCSS variables and mixins
+└── App.jsx             # Main application component
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Features Overview
+
+### Patient Features
+- Browse services and treatments
+- Book appointments online
+- View clinic information and hours
+- Contact the clinic
+- Read testimonials
+
+### Admin Features
+- Secure login system
+- View all appointments
+- Edit appointment details
+- Delete appointments
+- Filter appointments by date
+- Pagination for large datasets
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is proprietary and confidential.
