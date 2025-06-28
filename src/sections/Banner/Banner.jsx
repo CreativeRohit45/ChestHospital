@@ -78,10 +78,14 @@ const Banner = () => {
                                         <img src={shapeThree} alt="shape" />
                                         <div className="tree-pattern-container">
                                             <img src={shapeFour} alt="tree pattern" className="tree-pattern" />
-                                            <div className="tree-tagline">
-                                                <span className="tagline-text">More Oxygen</span>
-                                                <span className="tagline-text">More Life</span>
-                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Tagline positioned below the tree */}
+                                    <div className="tree-tagline-wrapper">
+                                        <div className="tree-tagline">
+                                            <span className="tagline-text">More Oxygen</span>
+                                            <span className="tagline-text">More Life</span>
                                         </div>
                                     </div>
                                 </div>

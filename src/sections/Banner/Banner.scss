@@ -214,33 +214,40 @@
                 position: relative;
                 z-index: 1;
             }
+        }
+    }
 
-            .tree-tagline {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 2;
-                text-align: center;
-                pointer-events: none;
+    .tree-tagline-wrapper {
+        position: absolute;
+        left: 10%;
+        top: 65%;
+        z-index: 3;
+        width: 200px;
+        text-align: center;
 
-                .tagline-text {
-                    display: block;
-                    color: $color-white;
-                    font-size: 18px;
-                    font-weight: 700;
-                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-                    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                    line-height: 1.2;
-                    margin-bottom: 5px;
-                    animation: breathe 3s ease-in-out infinite;
+        .tree-tagline {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(28, 102, 255, 0.2);
+            border: 2px solid rgba(28, 102, 255, 0.1);
+            animation: breathe 3s ease-in-out infinite;
 
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
+            .tagline-text {
+                display: block;
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 5px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+                &:last-child {
+                    margin-bottom: 0;
                 }
             }
         }
@@ -259,12 +266,12 @@
 
 @keyframes breathe {
     0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.9;
+        transform: scale(1);
+        box-shadow: 0 15px 35px rgba(28, 102, 255, 0.2);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.05);
-        opacity: 1;
+        transform: scale(1.02);
+        box-shadow: 0 20px 40px rgba(28, 102, 255, 0.3);
     }
 }
 
@@ -293,12 +300,20 @@
             .tree-pattern-container {
                 left: 5%;
                 top: 25%;
+            }
+        }
 
-                .tree-tagline {
-                    .tagline-text {
-                        font-size: 14px;
-                        margin-bottom: 3px;
-                    }
+        .tree-tagline-wrapper {
+            left: 5%;
+            top: 55%;
+            width: 160px;
+
+            .tree-tagline {
+                padding: 15px 20px;
+
+                .tagline-text {
+                    font-size: 16px;
+                    margin-bottom: 3px;
                 }
             }
         }
@@ -370,12 +385,20 @@
             .tree-pattern-container {
                 left: 8%;
                 top: 28%;
+            }
+        }
 
-                .tree-tagline {
-                    .tagline-text {
-                        font-size: 16px;
-                        margin-bottom: 4px;
-                    }
+        .tree-tagline-wrapper {
+            left: 8%;
+            top: 60%;
+            width: 180px;
+
+            .tree-tagline {
+                padding: 18px 22px;
+
+                .tagline-text {
+                    font-size: 18px;
+                    margin-bottom: 4px;
                 }
             }
         }
@@ -443,12 +466,12 @@
                     max-width: 70px;
                 }
             }
+        }
 
-            .tree-pattern-container {
-                .tree-tagline {
-                    .tagline-text {
-                        font-size: 17px;
-                    }
+        .tree-tagline-wrapper {
+            .tree-tagline {
+                .tagline-text {
+                    font-size: 19px;
                 }
             }
         }
