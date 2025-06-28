@@ -8,11 +8,13 @@ import Contactus from './pages/Contact/Contactus';
 import ContactList from './components/Table/ContactList';
 import Treatments from './pages/Treatments';
 import ScrollToTop from './ScrollToTop';
+import ScrollToTopArrow from './components/ScrollToTop/ScrollToTopArrow';
 
 function App() {
   return (
     <>
       <ScrollToTop />
+      <ScrollToTopArrow />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

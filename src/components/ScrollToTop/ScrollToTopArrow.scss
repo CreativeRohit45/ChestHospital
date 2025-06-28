@@ -1,0 +1,126 @@
+@use '../../sass/colors' as *;
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .scroll-to-top-btn {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+        color: $color-white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(28, 102, 255, 0.4);
+
+            &:before {
+                transform: translateX(0);
+            }
+
+            .arrow-icon {
+                animation: bounce 0.6s ease-in-out;
+            }
+        }
+
+        &:active {
+            transform: translateY(-1px);
+        }
+
+        .arrow-icon {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+
+        .scroll-to-top-btn {
+            width: 50px;
+            height: 50px;
+
+            .arrow-icon {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .scroll-to-top {
+        bottom: 25px;
+        right: 25px;
+
+        .scroll-to-top-btn {
+            width: 55px;
+            height: 55px;
+
+            .arrow-icon {
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+// Ensure it doesn't interfere with other floating elements
+@media (max-width: 991px) {
+    .scroll-to-top {
+        // Adjust position if there are other floating elements
+        bottom: 25px;
+        right: 25px;
+    }
+}
