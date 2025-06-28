@@ -27,6 +27,10 @@ const Banner = () => {
         }, 100);
     };
 
+    const handlePhoneClick = () => {
+        window.open('tel:+919158450788', '_self');
+    };
+
     return (
         <section className='section-bg section-common banner-section'>
             <div className="d-table">
@@ -39,36 +43,21 @@ const Banner = () => {
 
                                     <div className="banner-bottom">
                                         <div className="theme-btn">
-                                            <button onClick={handleBookAppointment} style={{background: 'none', border: 'none', padding: 0}}>
-                                                <span style={{
-                                                    background: 'linear-gradient(135deg, #1C66FF 0%, #608400 100%)',
-                                                    color: '#ffffff',
-                                                    padding: '20px 25px',
-                                                    textDecoration: 'none',
-                                                    borderRadius: '12px',
-                                                    transition: 'all 0.3s ease',
-                                                    border: '2px solid transparent',
-                                                    fontSize: '16px',
-                                                    fontWeight: '600',
-                                                    display: 'inline-block',
-                                                    boxShadow: '0 8px 25px rgba(28, 102, 255, 0.3)',
-                                                    cursor: 'pointer',
-                                                    position: 'relative',
-                                                    zIndex: 10
-                                                }}>
+                                            <button onClick={handleBookAppointment}>
+                                                <span>
                                                     Book an appointment
                                                 </span>
                                             </button>
                                         </div>
 
                                         <div className="banner-call">
-                                            <div className='icon'>
+                                            <div className='icon' onClick={handlePhoneClick}>
                                                 <img src={icon} alt="icon" />
                                             </div>
                                             <div className='call-text'>
                                                 <p>Support Available </p>
-                                                <h6>+91-9158450788</h6>
-                                                <h6>+91-8766040262</h6>
+                                                <h6 onClick={handlePhoneClick}>+91-9158450788</h6>
+                                                <h6 onClick={() => window.open('tel:+918766040262', '_self')}>+91-8766040262</h6>
                                             </div>
                                         </div>
                                     </div>

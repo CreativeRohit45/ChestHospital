@@ -11,10 +11,14 @@
         right: 0;
         left: 0;
         width: 100%;
+        z-index: 1;
     }
 }
 
 .banner-text {
+    position: relative;
+    z-index: 10;
+
     h1 {
         font-size: 64px;
         font-weight: 700;
@@ -26,20 +30,58 @@
         margin-top: 60px;
         display: flex;
         align-items: center;
+        position: relative;
+        z-index: 10;
 
         .theme-btn {
             margin-right: 50px;
+            position: relative;
+            z-index: 20;
 
-            a {
-                padding: 20px 25px;
-                position: relative;  
-                z-index: 10;
+            button {
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                cursor: pointer !important;
+                position: relative;
+                z-index: 30;
+
+                span {
+                    background: linear-gradient(135deg, #1C66FF 0%, #608400 100%) !important;
+                    color: #ffffff !important;
+                    padding: 20px 25px !important;
+                    text-decoration: none !important;
+                    border-radius: 12px !important;
+                    transition: all 0.3s ease !important;
+                    border: 2px solid transparent !important;
+                    fontSize: 16px !important;
+                    font-weight: 600 !important;
+                    display: inline-block !important;
+                    box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3) !important;
+                    cursor: pointer !important;
+                    position: relative !important;
+                    z-index: 40 !important;
+
+                    &:hover {
+                        background: #ffffff !important;
+                        color: #1C66FF !important;
+                        border-color: #1C66FF !important;
+                        transform: translateY(-3px) !important;
+                        box-shadow: 0 12px 35px rgba(28, 102, 255, 0.4) !important;
+                    }
+
+                    &:active {
+                        transform: translateY(-1px) !important;
+                    }
+                }
             }
         }
 
         .banner-call {
             display: flex;
             align-items: center;
+            position: relative;
+            z-index: 10;
 
             .icon {
                 width: 35px;
@@ -51,6 +93,13 @@
                 border-radius: 12px;
                 position: relative;
                 z-index: 1;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0 5px 15px rgba(28, 102, 255, 0.3);
+                }
 
                 &:before {
                     content: "";
@@ -80,6 +129,12 @@
                     text-transform: uppercase;
                     font-weight: 700;
                     margin-bottom: 2px;
+                    cursor: pointer;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $color-blue;
+                    }
                 }
             }
         }
@@ -89,6 +144,7 @@
 .banner-img-area {
     position: relative;
     text-align: center;
+    z-index: 5;
 
     .banner-img {
         margin-bottom: -70px;
@@ -132,6 +188,7 @@
     .shapes {
         img {
             position: absolute;
+            z-index: 2;
 
             &:nth-child(1) {
                 left: 0;
@@ -148,7 +205,7 @@
             &:nth-child(4) {
                 left: 10%;
                 top: 30%;
-                z-index: -1;
+                z-index: 1;
             }
         }
     }
@@ -161,6 +218,7 @@
     top: 10px;
     left: 15%;
     transform: translateX(-50%) rotate(-20deg);
+    z-index: 2;
 }
 
 // Mobile Responsive
@@ -205,10 +263,8 @@
                 margin-right: 0px;
                 margin-bottom: 20px;
                 
-                a {
-                    padding: 15px 20px;
-                    position: relative; 
-                    z-index: 10;
+                button span {
+                    padding: 15px 20px !important;
                 }
             }
     
@@ -272,10 +328,8 @@
                 margin-right: 0px;
                 margin-bottom: 20px;
                 
-                a {
-                    padding: 15px 20px;
-                    position: relative; 
-                    z-index: 10;
+                button span {
+                    padding: 15px 20px !important;
                 }
             }
     

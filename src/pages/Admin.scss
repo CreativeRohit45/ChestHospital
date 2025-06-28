@@ -1,0 +1,335 @@
+@use '../sass/colors' as *;
+
+.admin-login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(28, 102, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+  }
+
+  .admin-login-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .admin-login-card {
+    background: $color-white;
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 25px 50px rgba(28, 102, 255, 0.2);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $color-blue;
+      box-shadow: 0 35px 70px rgba(28, 102, 255, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .admin-header {
+      text-align: center;
+      margin-bottom: 40px;
+
+      .admin-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        font-size: 32px;
+        box-shadow: 0 10px 25px rgba(28, 102, 255, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      h2 {
+        color: $color-blue;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      p {
+        color: $color-gray;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    .admin-login-form {
+      .error-message {
+        background: #fee;
+        border: 2px solid #fcc;
+        color: #c33;
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+
+        span {
+          margin-right: 10px;
+          font-size: 18px;
+        }
+      }
+
+      .form-group {
+        margin-bottom: 30px;
+
+        label {
+          color: $color-black;
+          font-weight: 600;
+          font-size: 16px;
+          margin-bottom: 12px;
+          display: block;
+        }
+
+        input {
+          width: 100%;
+          padding: 18px 25px;
+          border: 2px solid rgba(28, 102, 255, 0.1);
+          border-radius: 12px;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          background: $color-white;
+
+          &:focus {
+            outline: none;
+            border-color: $color-blue;
+            box-shadow: 0 0 0 3px rgba(28, 102, 255, 0.1);
+          }
+
+          &::placeholder {
+            color: $color-gray;
+          }
+        }
+      }
+
+      .admin-login-btn {
+        width: 100%;
+        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+        color: $color-white;
+        padding: 18px 25px;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          margin-right: 10px;
+          font-size: 18px;
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 35px rgba(28, 102, 255, 0.4);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .admin-footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(28, 102, 255, 0.1);
+
+      p {
+        color: $color-gray;
+        font-size: 14px;
+        margin: 0;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.admin-dashboard {
+  .admin-dashboard-header {
+    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+    color: $color-white;
+    padding: 30px 0;
+    margin-top: 90px;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .dashboard-title {
+      h1 {
+        color: $color-white;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-right: 15px;
+          font-size: 36px;
+        }
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: $color-white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 575px) {
+  .admin-login-container {
+    padding: 15px;
+
+    .admin-login-card {
+      padding: 30px;
+
+      .admin-header {
+        margin-bottom: 30px;
+
+        .admin-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      .admin-login-form {
+        .form-group {
+          margin-bottom: 25px;
+
+          input {
+            padding: 15px 20px;
+            font-size: 14px;
+          }
+        }
+
+        .admin-login-btn {
+          padding: 15px 20px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .admin-dashboard {
+    .admin-dashboard-header {
+      margin-top: 80px;
+      padding: 20px 0;
+
+      .container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .dashboard-title {
+        h1 {
+          font-size: 24px;
+          flex-direction: column;
+          gap: 10px;
+
+          span {
+            margin-right: 0;
+          }
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

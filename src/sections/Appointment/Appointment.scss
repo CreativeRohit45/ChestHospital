@@ -23,12 +23,12 @@
         .location-name {
             position: absolute;
             bottom: 20px;
-            left: 0;
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
             background: $color-white;
             padding: 20px;
             width: 85%;
-            margin: auto;
+            max-width: 600px;
             display: flex;
             align-items: center;
             border-radius: 15px;
