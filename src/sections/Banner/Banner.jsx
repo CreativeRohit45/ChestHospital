@@ -70,16 +70,19 @@ const Banner = () => {
                                         <img src={bannerImg} alt="banner model" />
                                     </div>
                                     
-                                   
-                                    
-
                                     {/* Vector Shapes */}
                                     <div className="shapes">
                                         <div className="shpaess">
                                         </div>
                                         <img src={shapeTwo} alt="shape" />
                                         <img src={shapeThree} alt="shape" />
-                                        <img src={shapeFour} alt="shape" />
+                                        <div className="tree-pattern-container">
+                                            <img src={shapeFour} alt="tree pattern" className="tree-pattern" />
+                                            <div className="tree-tagline">
+                                                <span className="tagline-text">More Oxygen</span>
+                                                <span className="tagline-text">More Life</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

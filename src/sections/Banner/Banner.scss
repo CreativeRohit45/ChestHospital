@@ -202,10 +202,46 @@
                 right: 0;
                 top: 40%;
             }
-            &:nth-child(4) {
-                left: 10%;
-                top: 30%;
+        }
+
+        .tree-pattern-container {
+            position: absolute;
+            left: 10%;
+            top: 30%;
+            z-index: 1;
+
+            .tree-pattern {
+                position: relative;
                 z-index: 1;
+            }
+
+            .tree-tagline {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                text-align: center;
+                pointer-events: none;
+
+                .tagline-text {
+                    display: block;
+                    color: $color-white;
+                    font-size: 18px;
+                    font-weight: 700;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    line-height: 1.2;
+                    margin-bottom: 5px;
+                    animation: breathe 3s ease-in-out infinite;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }
@@ -219,6 +255,17 @@
     left: 15%;
     transform: translateX(-50%) rotate(-20deg);
     z-index: 2;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 1;
+    }
 }
 
 // Mobile Responsive
@@ -240,6 +287,18 @@
             img {
                 &:nth-child(1) {
                     max-width: 70px;
+                }
+            }
+
+            .tree-pattern-container {
+                left: 5%;
+                top: 25%;
+
+                .tree-tagline {
+                    .tagline-text {
+                        font-size: 14px;
+                        margin-bottom: 3px;
+                    }
                 }
             }
         }
@@ -307,6 +366,18 @@
                     max-width: 70px;
                 }
             }
+
+            .tree-pattern-container {
+                left: 8%;
+                top: 28%;
+
+                .tree-tagline {
+                    .tagline-text {
+                        font-size: 16px;
+                        margin-bottom: 4px;
+                    }
+                }
+            }
         }
     }
     
@@ -370,6 +441,14 @@
             img {
                 &:nth-child(1) {
                     max-width: 70px;
+                }
+            }
+
+            .tree-pattern-container {
+                .tree-tagline {
+                    .tagline-text {
+                        font-size: 17px;
+                    }
                 }
             }
         }
