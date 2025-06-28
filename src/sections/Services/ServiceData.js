@@ -32,7 +32,7 @@ const ServicesData = [
     description: "From mild infections to severe complications, our experts provide swift and effective treatment for all forms of chest infections."
   },
   {
-    icon: iconFour,
+    icon: iconsev,
     title: "COPD",
     description: "We provide long-term management plans for Chronic Obstructive Pulmonary Disease, including medication, pulmonary rehab, and lifestyle counseling."
   },
@@ -62,7 +62,7 @@ const ServicesData = [
     description: "We help patients recover from lingering post-COVID symptoms with respiratory therapy, lung function tests, and rehabilitation programs."
   },
   {
-    icon: iconFour,
+    icon: iconsev,
     title: "Pneumonia",
     description: "Our pneumonia care includes rapid diagnosis, appropriate antibiotic therapy, and follow-up support for full respiratory recovery."
   },
