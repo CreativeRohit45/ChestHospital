@@ -70,7 +70,7 @@ const Admin = () => {
   }
 
   return (
-    <>
+    <div className="admin-page">
       <Navbar />
       <div className="admin-dashboard">
         <div className="admin-dashboard-header">
@@ -91,10 +91,13 @@ const Admin = () => {
             </button>
           </div>
         </div>
-        <ContactList />
+        
+        <div className="admin-content">
+          <ContactList />
+        </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

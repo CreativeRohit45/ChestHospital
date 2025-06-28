@@ -176,6 +176,11 @@
   }
 }
 
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+}
+
 .admin-dashboard {
   .admin-dashboard-header {
     background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
@@ -184,6 +189,7 @@
     margin-top: 90px;
     position: relative;
     z-index: 1000;
+    box-shadow: 0 10px 30px rgba(28, 102, 255, 0.3);
 
     .container {
       display: flex;
@@ -242,6 +248,11 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       }
     }
+  }
+
+  .admin-content {
+    padding: 0;
+    background: transparent;
   }
 }
 
