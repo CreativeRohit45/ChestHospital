@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
@@ -16,8 +16,22 @@ const Admin = () => {
   const [editForm, setEditForm] = useState({});
   const [loading, setLoading] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [availableTimes, setAvailableTimes] = useState([]);
+  const [bookedSlots, setBookedSlots] = useState([]);
+  const [fetchingSlots, setFetchingSlots] = useState(false);
   const recordsPerPage = 10;
   const API_URL = 'https://hospital-app-latest.onrender.com';
+
+  // Clinic schedule - same as in ContactForm
+  const clinicSchedule = useMemo(() => ({
+    0: [], // Sunday - Closed
+    1: ["6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"], // Monday
+    2: ["10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"], // Tuesday
+    3: ["6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"], // Wednesday
+    4: ["6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"], // Thursday
+    5: ["10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"], // Friday
+    6: ["10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"] // Saturday
+  }), []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -72,6 +86,36 @@ const Admin = () => {
     }
   };
 
+  // Fetch available time slots when editing appointment date
+  const fetchAvailableSlots = async (appointmentDate) => {
+    if (!appointmentDate) {
+      setAvailableTimes([]);
+      setBookedSlots([]);
+      return;
+    }
+    
+    setFetchingSlots(true);
+    try {
+      const response = await axios.get(`${API_URL}/api/booked-slots/${appointmentDate}`);
+      setBookedSlots(response.data.bookedSlots || []);
+      
+      const selectedDate = new Date(appointmentDate);
+      const dayOfWeek = selectedDate.getDay();
+      
+      const allSlots = clinicSchedule[dayOfWeek] || [];
+      const booked = response.data.bookedSlots || [];
+
+      const available = allSlots.filter(slot => !booked.includes(slot));
+      setAvailableTimes(available);
+      
+    } catch (err) {
+      console.error('Error fetching booked slots:', err);
+      setAvailableTimes([]);
+    } finally {
+      setFetchingSlots(false);
+    }
+  };
+
   const handleEdit = (contact) => {
     setEditingContact(contact.id);
     setEditForm({
@@ -81,6 +125,25 @@ const Admin = () => {
       appointmentTime: contact.appointmentTime,
       message: contact.message || ''
     });
+    
+    // Fetch available slots for the current appointment date
+    fetchAvailableSlots(contact.appointmentDate);
+  };
+
+  const handleEditFormChange = (field, value) => {
+    setEditForm(prev => ({
+      ...prev,
+      [field]: value
+    }));
+
+    // If date changes, fetch new available slots and reset time
+    if (field === 'appointmentDate') {
+      setEditForm(prev => ({
+        ...prev,
+        appointmentTime: ''
+      }));
+      fetchAvailableSlots(value);
+    }
   };
 
   const handleSaveEdit = async (id) => {
@@ -101,6 +164,8 @@ const Admin = () => {
       
       setEditingContact(null);
       setEditForm({});
+      setAvailableTimes([]);
+      setBookedSlots([]);
       alert('Contact updated successfully!');
     } catch (error) {
       console.error('Error updating contact:', error);
@@ -113,6 +178,8 @@ const Admin = () => {
   const handleCancelEdit = () => {
     setEditingContact(null);
     setEditForm({});
+    setAvailableTimes([]);
+    setBookedSlots([]);
   };
 
   const handleDelete = async (id) => {
@@ -291,7 +358,7 @@ const Admin = () => {
                                 <input
                                   type="text"
                                   value={editForm.name}
-                                  onChange={(e) => setEditForm({...editForm, name: e.target.value})}
+                                  onChange={(e) => handleEditFormChange('name', e.target.value)}
                                   className="edit-input"
                                 />
                               ) : (
@@ -303,7 +370,7 @@ const Admin = () => {
                                 <input
                                   type="tel"
                                   value={editForm.mobile}
-                                  onChange={(e) => setEditForm({...editForm, mobile: e.target.value})}
+                                  onChange={(e) => handleEditFormChange('mobile', e.target.value)}
                                   className="edit-input"
                                 />
                               ) : (
@@ -315,8 +382,9 @@ const Admin = () => {
                                 <input
                                   type="date"
                                   value={editForm.appointmentDate}
-                                  onChange={(e) => setEditForm({...editForm, appointmentDate: e.target.value})}
+                                  onChange={(e) => handleEditFormChange('appointmentDate', e.target.value)}
                                   className="edit-input"
+                                  min={new Date().toISOString().split('T')[0]}
                                 />
                               ) : (
                                 contact.appointmentDate
@@ -324,12 +392,38 @@ const Admin = () => {
                             </td>
                             <td>
                               {editingContact === contact.id ? (
-                                <input
-                                  type="time"
+                                <select
                                   value={editForm.appointmentTime}
-                                  onChange={(e) => setEditForm({...editForm, appointmentTime: e.target.value})}
-                                  className="edit-input"
-                                />
+                                  onChange={(e) => handleEditFormChange('appointmentTime', e.target.value)}
+                                  className="edit-select"
+                                  disabled={fetchingSlots || !editForm.appointmentDate}
+                                >
+                                  <option value="">
+                                    {fetchingSlots ? 'Loading...' : 'Select Time'}
+                                  </option>
+                                  {availableTimes.length > 0 ? (
+                                    availableTimes.map((time, timeIndex) => (
+                                      <option 
+                                        key={timeIndex} 
+                                        value={time}
+                                        disabled={bookedSlots.includes(time)}
+                                      >
+                                        {time} {bookedSlots.includes(time) ? '(Booked)' : ''}
+                                      </option>
+                                    ))
+                                  ) : (
+                                    editForm.appointmentDate && !fetchingSlots && 
+                                    <option disabled>No slots available</option>
+                                  )}
+                                  {/* Include current appointment time if it's not in available slots */}
+                                  {editForm.appointmentTime && 
+                                   !availableTimes.includes(editForm.appointmentTime) && 
+                                   !bookedSlots.includes(editForm.appointmentTime) && (
+                                    <option value={editForm.appointmentTime}>
+                                      {editForm.appointmentTime} (Current)
+                                    </option>
+                                  )}
+                                </select>
                               ) : (
                                 contact.appointmentTime
                               )}
@@ -338,7 +432,7 @@ const Admin = () => {
                               {editingContact === contact.id ? (
                                 <textarea
                                   value={editForm.message}
-                                  onChange={(e) => setEditForm({...editForm, message: e.target.value})}
+                                  onChange={(e) => handleEditFormChange('message', e.target.value)}
                                   className="edit-textarea"
                                   rows="2"
                                 />
@@ -355,7 +449,7 @@ const Admin = () => {
                                     <button
                                       onClick={() => handleSaveEdit(contact.id)}
                                       className="save-btn"
-                                      disabled={loading}
+                                      disabled={loading || fetchingSlots}
                                     >
                                       ✅
                                     </button>

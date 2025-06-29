@@ -469,7 +469,8 @@
                 }
 
                 .edit-input,
-                .edit-textarea {
+                .edit-textarea,
+                .edit-select {
                   width: 100%;
                   padding: 8px 12px;
                   border: 2px solid rgba(28, 102, 255, 0.2);
@@ -481,6 +482,20 @@
                     outline: none;
                     border-color: $color-blue;
                     box-shadow: 0 0 0 2px rgba(28, 102, 255, 0.1);
+                  }
+
+                  &:disabled {
+                    background-color: #f8f9fa;
+                    cursor: not-allowed;
+                  }
+                }
+
+                .edit-select {
+                  cursor: pointer;
+                  
+                  option:disabled {
+                    color: #999;
+                    font-style: italic;
                   }
                 }
 
@@ -931,7 +946,8 @@
               padding: 12px 8px;
 
               .edit-input,
-              .edit-textarea {
+              .edit-textarea,
+              .edit-select {
                 font-size: 11px;
                 padding: 6px 8px;
               }
