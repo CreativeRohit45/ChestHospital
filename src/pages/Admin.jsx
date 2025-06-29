@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import './Admin.scss';
 
 const Admin = () => {
@@ -19,6 +21,7 @@ const Admin = () => {
   const [availableTimes, setAvailableTimes] = useState([]);
   const [bookedSlots, setBookedSlots] = useState([]);
   const [fetchingSlots, setFetchingSlots] = useState(false);
+  const [exportLoading, setExportLoading] = useState(false);
   const recordsPerPage = 10;
   const API_URL = 'https://hospital-app-latest.onrender.com';
 
@@ -202,6 +205,118 @@ const Admin = () => {
     }
   };
 
+  const exportToPDF = () => {
+    setExportLoading(true);
+    
+    try {
+      const doc = new jsPDF();
+      
+      // Add clinic header
+      doc.setFontSize(20);
+      doc.setTextColor(28, 102, 255);
+      doc.text('Dr. Pandharkar Chest Clinic', 20, 20);
+      
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Appointment Report', 20, 30);
+      
+      // Add generation date
+      const currentDate = new Date().toLocaleDateString('en-IN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      doc.text(`Generated on: ${currentDate}`, 20, 40);
+      
+      // Add filter info
+      if (selectedDate) {
+        doc.text(`Filtered by Date: ${selectedDate}`, 20, 50);
+      } else {
+        doc.text('All Appointments', 20, 50);
+      }
+      
+      // Prepare table data
+      const tableData = filteredContacts.map((contact, index) => [
+        index + 1,
+        contact.name || 'N/A',
+        contact.mobile || 'N/A',
+        contact.appointmentDate || 'N/A',
+        contact.appointmentTime || 'N/A',
+        contact.message || 'No message'
+      ]);
+      
+      // Add table
+      doc.autoTable({
+        head: [['Sr.No', 'Name', 'Mobile', 'Date', 'Time', 'Message']],
+        body: tableData,
+        startY: 60,
+        styles: {
+          fontSize: 10,
+          cellPadding: 3,
+        },
+        headStyles: {
+          fillColor: [28, 102, 255],
+          textColor: [255, 255, 255],
+          fontStyle: 'bold'
+        },
+        alternateRowStyles: {
+          fillColor: [245, 245, 245]
+        },
+        columnStyles: {
+          0: { cellWidth: 15 }, // Sr.No
+          1: { cellWidth: 30 }, // Name
+          2: { cellWidth: 25 }, // Mobile
+          3: { cellWidth: 25 }, // Date
+          4: { cellWidth: 20 }, // Time
+          5: { cellWidth: 'auto' } // Message
+        },
+        margin: { top: 60, left: 20, right: 20 },
+        didDrawPage: function (data) {
+          // Add footer
+          const pageCount = doc.internal.getNumberOfPages();
+          const pageSize = doc.internal.pageSize;
+          const pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight();
+          
+          doc.setFontSize(8);
+          doc.setTextColor(128, 128, 128);
+          doc.text(
+            `Page ${data.pageNumber} of ${pageCount}`,
+            data.settings.margin.left,
+            pageHeight - 10
+          );
+          
+          doc.text(
+            'Dr. Pandharkar Chest Clinic - Confidential',
+            pageSize.width - 70,
+            pageHeight - 10
+          );
+        }
+      });
+      
+      // Add summary at the end
+      const finalY = doc.lastAutoTable.finalY + 20;
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
+      doc.text(`Total Appointments: ${filteredContacts.length}`, 20, finalY);
+      
+      // Generate filename
+      const filename = selectedDate 
+        ? `appointments_${selectedDate}.pdf`
+        : `all_appointments_${new Date().toISOString().split('T')[0]}.pdf`;
+      
+      // Save the PDF
+      doc.save(filename);
+      
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setExportLoading(false);
+    }
+  };
+
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = filteredContacts.slice(indexOfFirstRecord, indexOfLastRecord);
@@ -324,6 +439,13 @@ const Admin = () => {
                       disabled={loading}
                     >
                       {loading ? '🔄' : '🔄'} Refresh
+                    </button>
+                    <button 
+                      onClick={exportToPDF}
+                      className="export-btn"
+                      disabled={exportLoading || filteredContacts.length === 0}
+                    >
+                      {exportLoading ? '📄 Generating...' : '📄 Export PDF'}
                     </button>
                   </div>
                 </div>
