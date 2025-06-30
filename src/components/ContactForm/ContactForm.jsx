@@ -36,21 +36,51 @@ const ContactForm = () => {
     useEffect(() => {
         const fetchBookedSlots = async () => {
             if (!formData.appointmentDate) return;
-            
+
             setFetchingSlots(true);
+            setError('');
+
             try {
                 const response = await axios.get(`${API_URL}/api/booked-slots/${formData.appointmentDate}`);
-                setBookedSlots(response.data.bookedSlots || []);
-                
-                const selectedDate = new Date(formData.appointmentDate);
-                const dayOfWeek = selectedDate.getDay();
-                
-                const allSlots = clinicSchedule[dayOfWeek] || [];
                 const booked = response.data.bookedSlots || [];
 
-                const available = allSlots.filter(slot => !booked.includes(slot));
+                setBookedSlots(booked);
+
+                const selectedDate = new Date(formData.appointmentDate);
+                const dayOfWeek = selectedDate.getDay();
+
+                const allSlots = clinicSchedule[dayOfWeek] || [];
+
+                const now = new Date();
+                const isToday = selectedDate.toDateString() === now.toDateString();
+
+                const available = allSlots.filter(slot => {
+                    if (booked.includes(slot)) return false;
+
+                    if (isToday) {
+                        const [hours, minutes, meridian] = slot.match(/(\d+):(\d+)\s?(AM|PM)/i).slice(1);
+                        let slotHour = parseInt(hours, 10);
+                        let slotMinute = parseInt(minutes, 10);
+
+                        if (meridian.toUpperCase() === 'PM' && slotHour !== 12) slotHour += 12;
+                        if (meridian.toUpperCase() === 'AM' && slotHour === 12) slotHour = 0;
+
+                        const slotTime = new Date();
+                        slotTime.setHours(slotHour, slotMinute, 0, 0);
+
+                        return slotTime > now;
+                    }
+
+                    return true;
+                });
+
                 setAvailableTimes(available);
-                
+
+                // Optional: if no slots left for today
+                if (isToday && available.length === 0) {
+                    setError("No appointment slots available for the remaining time today.");
+                }
+
             } catch (err) {
                 console.error('Error fetching booked slots:', err);
                 setError('Failed to fetch available time slots. Please try again.');
@@ -62,11 +92,12 @@ const ContactForm = () => {
         fetchBookedSlots();
     }, [formData.appointmentDate, clinicSchedule, API_URL]);
 
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: value.trim()
+            [name]: value
         }));
         setError('');
         setSuccess('');

@@ -47,12 +47,36 @@ const Admin = () => {
     }
   };
 
+  const sortByDateAndTime = (a, b) => {
+  // Convert date strings to Date objects
+  const dateA = new Date(a.appointmentDate);
+  const dateB = new Date(b.appointmentDate);
+
+  if (dateA.getTime() !== dateB.getTime()) {
+    return dateA - dateB;
+  }
+
+  // If dates are equal, compare time strings (e.g., "10:30 AM")
+  const parseTime = (timeStr) => {
+      if (!timeStr) return Infinity;
+      const [time, modifier] = timeStr.split(' ');
+      let [hours, minutes] = time.split(':').map(Number);
+      if (modifier === 'PM' && hours !== 12) hours += 12;
+      if (modifier === 'AM' && hours === 12) hours = 0;
+      return hours * 60 + minutes;
+    };
+
+    return parseTime(a.appointmentTime) - parseTime(b.appointmentTime);
+  };
+
+
   const fetchAllContacts = async () => {
     setLoading(true);
     try {
       const response = await axios.get(`${API_URL}/api/admin/getallbookedslots`);
-      setContacts(response.data);
-      setFilteredContacts(response.data);
+      const sorted = response.data.sort(sortByDateAndTime);
+      setContacts(sorted);
+      setFilteredContacts(sorted);
       setSelectedDate('');
       setCurrentPage(1);
     } catch (error) {
@@ -74,7 +98,8 @@ const Admin = () => {
     setCurrentPage(1);
 
     if (date === '') {
-      setFilteredContacts(contacts);
+      const sorted = response.data.sort(sortByDateAndTime);
+      setFilteredContacts(sorted);
     } else {
       setLoading(true);
       try {

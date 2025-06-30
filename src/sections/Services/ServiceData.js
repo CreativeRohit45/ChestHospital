@@ -13,7 +13,7 @@ const ServicesData = [
   },
   {
     icon: iconTwo,
-    title: "Branchoscopy",
+    title: "Bronchoscopy",
     description: "Using advanced bronchoscopic techniques, we provide minimally invasive evaluation of airways for accurate detection of lung conditions."
   },
   {
@@ -78,7 +78,7 @@ const ServicesData = [
   },
   {
     icon: iconThree,
-    title: "Tabacco & Smoking Cessation",
+    title: "Tobacco & Smoking Cessation",
     description: "Our smoking cessation program combines counseling, nicotine replacement therapy, and follow-ups to support a smoke-free lifestyle."
   },
   {

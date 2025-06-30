@@ -54,7 +54,7 @@ const Services = () => {
                 {visibleCount < ServicesData.length && (
                     <div className="text-center mt-5">
                         <button className="btn btn-primary load-more-btn" onClick={handleLoadMore}>
-                            Load More Services
+                            Load More Treatments
                         </button>
                     </div>
                 )}

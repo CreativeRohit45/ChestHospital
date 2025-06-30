@@ -8,7 +8,7 @@ const Expert = () => {
     const expertiseAreas = [
         {
             title: 'Pulmonary Medicine Specialist',
-            description: '12+ years of specialized experience in respiratory care and treatment'
+            description: '19+ years of specialized experience in respiratory care and treatment'
         },
         {
             title: 'Advanced Diagnostic Services',
@@ -25,9 +25,9 @@ const Expert = () => {
     ];
 
     const achievements = [
-        { number: '1000+', label: 'Patients Treated' },
-        { number: '12+', label: 'Years Experience' },
-        { number: '6+', label: 'Hospital Affiliations' },
+        { number: '10K+', label: 'Patients Treated' },
+        { number: '19+', label: 'Years Experience' },
+        { number: '10+', label: 'Hospital Affiliations' },
         { number: '95%', label: 'Success Rate' }
     ];
 
