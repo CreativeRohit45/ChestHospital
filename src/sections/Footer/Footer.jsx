@@ -53,10 +53,10 @@ const Footer = () => {
     };
 
     const handleLocationClick = () => {
-        const address = "Office Number. 017, First floor, A Building Kolte Patil Downtown City Vista, Pune";
-        const encodedAddress = encodeURIComponent(address);
-        window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+    const mapsUrl = "https://maps.app.goo.gl/9XqnYqnRR4z7FJiu7";
+    window.open(mapsUrl, '_blank');
     };
+
 
     return (
         <footer className='pt-100'>
@@ -71,9 +71,8 @@ const Footer = () => {
                         <div className="social-logo">
                             <p>Follow us on</p>
                             <ul>
-                                <li><a href="/"><FaFacebookF /></a></li>
-                                <li><a href="/"><FaTwitter /></a></li>
-                                <li><a href="/"><FaInstagram /></a></li>
+                                <li><a href="https://www.facebook.com/share/1G3KdvntpC/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a></li>
+                                <li><a href="https://www.instagram.com/dr.pandharkar_chest_clinic?igsh=cG9lcjZ3eWV1eDFr" target="_blank" rel="noopener noreferrer"><FaInstagram /></a></li>
                             </ul>
                         </div>
                     </div>

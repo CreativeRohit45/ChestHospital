@@ -186,7 +186,7 @@
     background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
     color: $color-white;
     padding: 40px 0;
-    margin-top: 90px;
+    margin-top: 120px;
     position: relative;
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(28, 102, 255, 0.3);
@@ -848,7 +848,7 @@
 
   .admin-dashboard {
     .admin-dashboard-header {
-      margin-top: 80px;
+      margin-top: 110px;
       padding: 25px 0;
 
       .container {
@@ -1036,7 +1036,7 @@
 @media (min-width: 576px) and (max-width: 767px) {
   .admin-dashboard {
     .admin-dashboard-header {
-      margin-top: 85px;
+      margin-top: 120px;
       padding: 30px 0;
 
       .dashboard-title {

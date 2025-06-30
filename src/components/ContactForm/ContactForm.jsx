@@ -20,7 +20,7 @@ const ContactForm = () => {
     const [bookedSlots, setBookedSlots] = useState([]);
 
     // Update this URL to your backend API URL
-    const API_URL = 'https://hospital-app-latest.onrender.com'; 
+    const API_URL = 'https://hospital-backend-production-1b4c.up.railway.app'; 
 
     // Clinic schedule
     const clinicSchedule = useMemo(() => ({
