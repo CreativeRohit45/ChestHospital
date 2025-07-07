@@ -9,6 +9,8 @@ import location from '../../assets/footer/location.png';
 
 const Footer = () => {
 
+    const currentYear = new Date().getFullYear();
+
     const footerMenu = [
         {
             'name': 'Home',
@@ -150,7 +152,12 @@ const Footer = () => {
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <div className="copyright-area">
                         <div className='copy-text'>
-                            <p>&copy; ChestSpecialist. All Right Reserved</p>
+                             <p>
+                                &copy; {currentYear} ChestSpecialist. All Rights Reserved. Website by{' '}
+                                <a href="https://rohit45-portfolio.netlify.app" target="_blank" rel="noopener noreferrer">
+                                Rohit Indi
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

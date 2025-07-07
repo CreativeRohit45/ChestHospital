@@ -10,11 +10,11 @@ import contactImage from '../../assets/contactusimg.jpg';
 const Contactus = () => {
     const clinicHours = [
         { day: 'Monday', time: '6:00 PM - 9:30 PM' },
-        { day: 'Tuesday', time: '10:00 AM - 12:00 PM & 7:00 PM - 9:30 PM' },
+        { day: 'Tuesday', time: '10:00 AM - 1:00 PM & 7:00 PM - 9:30 PM' },
         { day: 'Wednesday', time: '6:00 PM - 9:30 PM' },
         { day: 'Thursday', time: '6:00 PM - 9:30 PM' },
-        { day: 'Friday', time: '10:00 AM - 12:00 PM & 7:00 PM - 9:30 PM' },
-        { day: 'Saturday', time: '10:00 AM - 12:00 PM & 6:00 PM - 9:30 PM' },
+        { day: 'Friday', time: '10:00 AM - 1:00 PM & 6:00 PM - 9:30 PM' },
+        { day: 'Saturday', time: '10:00 AM - 1:00 PM & 6:00 PM - 9:30 PM' },
         { day: 'Sunday', time: 'Closed', closed: true }
     ];
 

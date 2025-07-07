@@ -81,7 +81,7 @@ const AboutBanner = () => {
                                         <p>Years Experience</p>
                                     </div>
                                     <div className="stat-item">
-                                        <h3>10K+</h3>
+                                        <h3>15K+</h3>
                                         <p>Happy Patients</p>
                                     </div>
                                 </div>

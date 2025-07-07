@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import './TreatmentSection.scss';
 import { useLocation } from 'react-router-dom';
@@ -22,6 +22,7 @@ import imgSixteen from '../../assets/treatment/img16.jpg';
 
 const TreatmentSection = () => {
     const location = useLocation();
+    const [expandedSymptoms, setExpandedSymptoms] = useState({});
 
     useEffect(() => {
         // Check if there's a hash in the URL and scroll to that treatment
@@ -38,6 +39,13 @@ const TreatmentSection = () => {
             }
         }
     }, [location]);
+
+    const toggleSymptoms = (treatmentId) => {
+        setExpandedSymptoms(prev => ({
+            ...prev,
+            [treatmentId]: !prev[treatmentId]
+        }));
+    };
 
     const treatments = [
         {
@@ -266,6 +274,33 @@ const TreatmentSection = () => {
         }
     ];
 
+    const renderSymptomsList = (treatment) => {
+        const isExpanded = expandedSymptoms[treatment.id];
+        const displaySymptoms = isExpanded ? treatment.symptoms : treatment.symptoms.slice(0, 3);
+        const remainingCount = treatment.symptoms.length - 3;
+
+        return (
+            <div className="symptoms-section">
+                <h4>Common Symptoms</h4>
+                <ul className="symptoms-list">
+                    {displaySymptoms.map((symptom, idx) => (
+                        <li key={idx}>{symptom}</li>
+                    ))}
+                    {remainingCount > 0 && (
+                        <li 
+                            className="more-symptoms"
+                            onClick={() => toggleSymptoms(treatment.id)}
+                        >
+                            {isExpanded 
+                                ? 'Show less symptoms' 
+                                : `+${remainingCount} more symptoms`
+                            }
+                        </li>
+                    )}
+                </ul>
+            </div>
+        );
+    };
 
     return (
         <section className='treatment-section pt-100 pb-70' data-aos="fade-up" data-aos-duration="2000">
@@ -306,19 +341,7 @@ const TreatmentSection = () => {
                                         <div className="treatment-details">
                                             <div className="row">
                                                 <div className="col-lg-6">
-                                                    <div className="symptoms-section">
-                                                        <h4>Common Symptoms</h4>
-                                                        <ul className="symptoms-list">
-                                                            {treatment.symptoms.slice(0, 3).map((symptom, idx) => (
-                                                                <li key={idx}>{symptom}</li>
-                                                            ))}
-                                                            {treatment.symptoms.length > 3 && (
-                                                                <li className="more-symptoms">
-                                                                    +{treatment.symptoms.length - 3} more symptoms
-                                                                </li>
-                                                            )}
-                                                        </ul>
-                                                    </div>
+                                                    {renderSymptomsList(treatment)}
                                                 </div>
                                                 
                                                 <div className="col-lg-6">

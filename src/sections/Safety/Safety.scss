@@ -1,45 +1,337 @@
-.safty-section {
-    .section-title {
-        text-align: center;
-        max-width: 600px;
-        margin: 0 auto 50px;
+@use '../../sass/colors' as *;
 
-        h2 {
-            max-width: inherit;
+.safety-section {
+    background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(28, 102, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .safety-header {
+        margin-bottom: 80px;
+        position: relative;
+        z-index: 2;
+
+        .section-title {
+            margin-bottom: 0;
         }
     }
 
-    .safety-video {
-        max-width: 950px;
-        margin: auto;
+    .safety-features {
+        margin-bottom: 80px;
+        position: relative;
+        z-index: 2;
+
+        .row {
+            margin-bottom: 0; // Remove the row margin
+        }
+
+        // Add proper spacing between rows using nth-child
+        .col-lg-4:nth-child(4),
+        .col-lg-4:nth-child(5),
+        .col-lg-4:nth-child(6) {
+            margin-top: 40px; // Add space for second row
+        }
+
+        .safety-feature-card {
+            background: $color-white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px; // Keep individual card margin
+            box-shadow: 0 15px 35px rgba(28, 102, 255, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            &:hover {
+                transform: translateY(-8px);
+                border-color: $color-blue;
+                box-shadow: 0 25px 50px rgba(28, 102, 255, 0.2);
+
+                .feature-icon {
+                    transform: scale(1.1);
+                    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                }
+            }
+
+            .feature-icon {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, $color-light-blue 0%, $color-light-green 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                font-size: 32px;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 20px rgba(28, 102, 255, 0.15);
+            }
+
+            .feature-content {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+
+                h4 {
+                    color: $color-blue;
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    line-height: 1.3;
+                }
+
+                p {
+                    color: $color-gray;
+                    font-size: 15px;
+                    line-height: 1.6;
+                    margin: 0;
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+
+    .safety-video-section {
+        background: $color-white;
+        border-radius: 25px;
+        padding: 60px;
+        box-shadow: 0 20px 40px rgba(28, 102, 255, 0.1);
+        position: relative;
+        z-index: 2;
+
+        .safety-commitment {
+            h3 {
+                color: $color-blue;
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 25px;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -8px;
+                    left: 0;
+                    width: 60px;
+                    height: 4px;
+                    background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                    border-radius: 2px;
+                }
+            }
+
+            p {
+                color: $color-gray;
+                font-size: 18px;
+                line-height: 1.7;
+                margin-bottom: 30px;
+            }
+
+            .commitment-points {
+                .commitment-point {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    padding: 12px 0;
+
+                    .point-icon {
+                        width: 24px;
+                        height: 24px;
+                        background: linear-gradient(135deg, $color-green 0%, $color-blue 100%);
+                        color: $color-white;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 15px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        flex-shrink: 0;
+                    }
+
+                    span:last-child {
+                        color: $color-black;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+
+        .safety-video {
+            .instagram-embed-container {
+                position: relative;
+                width: 100%;
+                padding-top: 125%; // 4:5 aspect ratio for Instagram posts
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(28, 102, 255, 0.2);
+
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+            }
+        }
     }
 }
 
-.safety-video {
-    position: relative;
-    width: 100%; /* Full width of the container */
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+// Mobile Responsive
+@media (max-width: 575px) {
+    .safety-section {
+        .safety-header {
+            margin-bottom: 50px;
+        }
 
-    iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+        .safety-features {
+            margin-bottom: 50px;
+
+            // Reset nth-child spacing for mobile (single column)
+            .col-lg-4:nth-child(1),
+            .col-lg-4:nth-child(2),
+            .col-lg-4:nth-child(3),
+            .col-lg-4:nth-child(4),
+            .col-lg-4:nth-child(5),
+            .col-lg-4:nth-child(6) {
+                margin-top: 20px;
+            }
+
+            .safety-feature-card {
+                padding: 30px 25px;
+                margin-bottom: 30px;
+
+                .feature-icon {
+                    width: 60px;
+                    height: 60px;
+                    font-size: 24px;
+                    margin-bottom: 20px;
+                }
+
+                .feature-content {
+                    h4 {
+                        font-size: 18px;
+                    }
+
+                    p {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .safety-video-section {
+            padding: 30px 20px;
+
+            .safety-commitment {
+                margin-bottom: 30px;
+
+                h3 {
+                    font-size: 24px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+
+                .commitment-points {
+                    .commitment-point {
+                        span:last-child {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            .safety-video {
+                .instagram-embed-container {
+                    padding-top: 100%; // Square aspect ratio on mobile
+                }
+            }
+        }
     }
 }
 
-/* Optional: Add responsive tweaks if necessary */
-@media (max-width: 768px) {
-    .safety-video {
-        padding-top: 75%; /* Adjust for 4:3 aspect ratio on smaller screens if needed */
+@media (min-width: 576px) and (max-width: 767px) {
+    .safety-section {
+        .safety-features {
+            // Reset nth-child spacing for tablet (2 columns)
+            .col-lg-4:nth-child(4),
+            .col-lg-4:nth-child(5),
+            .col-lg-4:nth-child(6) {
+                margin-top: 0;
+            }
+
+            // Add spacing for 2-column layout (every 3rd item starts new row)
+            .col-lg-4:nth-child(3n+1) {
+                clear: left;
+            }
+
+            .col-lg-4:nth-child(n+3) {
+                margin-top: 40px;
+            }
+        }
+
+        .safety-video-section {
+            padding: 40px 30px;
+
+            .safety-commitment {
+                margin-bottom: 30px;
+
+                h3 {
+                    font-size: 28px;
+                }
+            }
+        }
     }
 }
 
-@media (max-width: 480px) {
-    .safety-video {
-        padding-top: 100%; /* Adjust to a square (1:1 aspect ratio) for very small screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .safety-section {
+        .safety-features {
+            // For medium screens, keep the 3-column layout spacing
+            .col-lg-4:nth-child(4),
+            .col-lg-4:nth-child(5),
+            .col-lg-4:nth-child(6) {
+                margin-top: 40px;
+            }
+        }
+
+        .safety-video-section {
+            .safety-commitment {
+                h3 {
+                    font-size: 30px;
+                }
+            }
+        }
     }
-    
+}
+
+@media (min-width: 992px) {
+    .safety-section {
+        .safety-features {
+            // For large screens, maintain the 3-column layout spacing
+            .col-lg-4:nth-child(4),
+            .col-lg-4:nth-child(5),
+            .col-lg-4:nth-child(6) {
+                margin-top: 40px;
+            }
+        }
+    }
 }

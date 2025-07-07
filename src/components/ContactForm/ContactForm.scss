@@ -49,12 +49,257 @@
                 }
             }
 
-            select.form-control {
-                cursor: pointer;
-                
-                &:disabled {
-                    background-color: #f8f9fa;
-                    cursor: not-allowed;
+            .calendar-input-wrapper {
+                position: relative;
+
+                .calendar-display {
+                    cursor: pointer;
+                    
+                    &:hover {
+                        border-color: $color-blue;
+                    }
+                }
+
+                .calendar-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.5);
+                    z-index: 9998;
+                    backdrop-filter: blur(2px);
+                }
+
+                .calendar-popup {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: $color-white;
+                    border: 2px solid $color-blue;
+                    border-radius: 15px;
+                    box-shadow: 0 25px 50px rgba(28, 102, 255, 0.3);
+                    z-index: 9999;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                    width: 90vw;
+                    max-width: 600px;
+
+                    .calendar-header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 20px;
+                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                        color: $color-white;
+                        border-radius: 13px 13px 0 0;
+                        position: sticky;
+                        top: 0;
+                        z-index: 10;
+
+                        h3 {
+                            margin: 0;
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: $color-white;
+                        }
+
+                        .calendar-nav-btn,
+                        .calendar-close-btn {
+                            background: rgba(255, 255, 255, 0.2);
+                            border: none;
+                            color: $color-white;
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            font-size: 18px;
+                            font-weight: bold;
+                            transition: all 0.3s ease;
+
+                            &:hover {
+                                background: rgba(255, 255, 255, 0.3);
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .calendar-close-btn {
+                            font-size: 24px;
+                            line-height: 1;
+                        }
+                    }
+
+                    .calendar-content {
+                        padding: 20px;
+
+                        .calendar-grid {
+                            .calendar-weekdays {
+                                display: grid;
+                                grid-template-columns: repeat(7, 1fr);
+                                gap: 5px;
+                                margin-bottom: 10px;
+
+                                .weekday {
+                                    text-align: center;
+                                    font-weight: 600;
+                                    color: $color-blue;
+                                    padding: 10px 5px;
+                                    font-size: 14px;
+                                }
+                            }
+
+                            .calendar-days {
+                                display: grid;
+                                grid-template-columns: repeat(7, 1fr);
+                                gap: 5px;
+
+                                .calendar-day {
+                                    min-height: 80px;
+                                    border: 1px solid rgba(28, 102, 255, 0.1);
+                                    border-radius: 8px;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    position: relative;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    justify-content: flex-start;
+                                    padding: 8px 4px;
+                                    background: $color-white;
+
+                                    .day-number {
+                                        font-weight: 600;
+                                        font-size: 16px;
+                                        color: $color-black;
+                                        margin-bottom: 4px;
+                                    }
+
+                                    .slots-indicator {
+                                        font-size: 10px;
+                                        text-align: center;
+                                        line-height: 1.2;
+
+                                        .slots-count {
+                                            color: $color-green;
+                                            font-weight: 600;
+                                        }
+
+                                        .loading-dots {
+                                            color: $color-blue;
+                                            animation: pulse 1.5s infinite;
+                                        }
+                                    }
+
+                                    .closed-indicator {
+                                        font-size: 10px;
+                                        color: #dc3545;
+                                        font-weight: 600;
+                                        text-align: center;
+                                    }
+
+                                    &:hover:not(.past):not(.closed):not(.other-month) {
+                                        border-color: $color-blue;
+                                        background: rgba(28, 102, 255, 0.05);
+                                        transform: translateY(-2px);
+                                        box-shadow: 0 5px 15px rgba(28, 102, 255, 0.2);
+                                    }
+
+                                    &.selected {
+                                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                                        color: $color-white;
+                                        border-color: $color-blue;
+
+                                        .day-number {
+                                            color: $color-white;
+                                        }
+
+                                        .slots-indicator .slots-count {
+                                            color: $color-white;
+                                        }
+                                    }
+
+                                    &.other-month {
+                                        opacity: 0.3;
+                                        cursor: not-allowed;
+
+                                        .day-number {
+                                            color: $color-gray;
+                                        }
+                                    }
+
+                                    &.past {
+                                        opacity: 0.4;
+                                        cursor: not-allowed;
+                                        background: #f8f9fa;
+
+                                        .day-number {
+                                            color: $color-gray;
+                                        }
+                                    }
+
+                                    &.closed {
+                                        background: #fff5f5;
+                                        cursor: not-allowed;
+                                        border-color: #fecaca;
+
+                                        .day-number {
+                                            color: #dc3545;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .time-slots-section {
+                            margin-top: 25px;
+                            padding-top: 25px;
+                            border-top: 2px solid rgba(28, 102, 255, 0.1);
+
+                            h4 {
+                                color: $color-blue;
+                                font-size: 16px;
+                                font-weight: 600;
+                                margin-bottom: 15px;
+                                text-align: center;
+                            }
+
+                            .time-slots-grid {
+                                display: grid;
+                                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                                gap: 10px;
+
+                                .time-slot-btn {
+                                    padding: 12px 8px;
+                                    background: rgba(28, 102, 255, 0.1);
+                                    border: 2px solid rgba(28, 102, 255, 0.2);
+                                    border-radius: 8px;
+                                    color: $color-blue;
+                                    font-weight: 600;
+                                    font-size: 12px;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+
+                                    &:hover {
+                                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                                        color: $color-white;
+                                        border-color: $color-blue;
+                                        transform: translateY(-2px);
+                                        box-shadow: 0 5px 15px rgba(28, 102, 255, 0.3);
+                                    }
+                                }
+
+                                .loading-slots,
+                                .no-slots {
+                                    grid-column: 1 / -1;
+                                    text-align: center;
+                                    padding: 20px;
+                                    color: $color-gray;
+                                    font-style: italic;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -156,62 +401,171 @@
     }
 }
 
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 // Mobile Responsive
 @media (max-width: 575px) {
     .appointment-container {
         .contact-form {
-            padding: 35px;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 0 10px;
 
             .form-group {
-                margin-bottom: 30px;
+                margin-bottom: 25px;
 
                 label {
-                    font-size: 16px;
+                    font-size: 15px;
+                    margin-bottom: 10px;
                 }
 
                 .form-control {
-                    padding: 18px 20px;
-                    font-size: 16px;
-                    min-height: 55px;
+                    padding: 15px 18px;
+                    font-size: 15px;
+                    min-height: 50px;
+                    border-radius: 10px;
+                }
+
+                .calendar-input-wrapper {
+                    .calendar-popup {
+                        width: 95vw;
+                        max-width: 380px;
+                        max-height: 85vh;
+                        border-radius: 20px;
+
+                        .calendar-header {
+                            padding: 15px 20px;
+                            border-radius: 18px 18px 0 0;
+
+                            h3 {
+                                font-size: 16px;
+                            }
+
+                            .calendar-nav-btn,
+                            .calendar-close-btn {
+                                width: 32px;
+                                height: 32px;
+                                font-size: 16px;
+                            }
+
+                            .calendar-close-btn {
+                                font-size: 20px;
+                            }
+                        }
+
+                        .calendar-content {
+                            padding: 15px;
+
+                            .calendar-grid {
+                                .calendar-weekdays .weekday {
+                                    padding: 6px 2px;
+                                    font-size: 11px;
+                                }
+
+                                .calendar-days .calendar-day {
+                                    min-height: 50px;
+                                    padding: 4px 2px;
+                                    border-radius: 6px;
+
+                                    .day-number {
+                                        font-size: 13px;
+                                        margin-bottom: 2px;
+                                    }
+
+                                    .slots-indicator,
+                                    .closed-indicator {
+                                        font-size: 8px;
+                                        line-height: 1.1;
+                                    }
+                                }
+                            }
+
+                            .time-slots-section {
+                                margin-top: 20px;
+                                padding-top: 20px;
+
+                                h4 {
+                                    font-size: 14px;
+                                    margin-bottom: 12px;
+                                }
+
+                                .time-slots-grid {
+                                    grid-template-columns: repeat(3, 1fr);
+                                    gap: 8px;
+
+                                    .time-slot-btn {
+                                        padding: 10px 6px;
+                                        font-size: 11px;
+                                        border-radius: 6px;
+                                    }
+                                }
+
+                                .loading-slots,
+                                .no-slots {
+                                    padding: 15px;
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 textarea.form-control {
-                    min-height: 130px;
+                    min-height: 120px;
                 }
             }
 
             .appointment-btn {
-                padding: 18px 35px;
+                padding: 15px 30px;
                 font-size: 16px;
-                min-height: 55px;
+                min-height: 50px;
+                border-radius: 10px;
             }
 
             .appointment-call {
                 flex-direction: column;
                 text-align: center;
-                padding: 25px;
+                padding: 20px;
+                margin-top: 25px;
+                border-radius: 12px;
 
                 .icon {
                     margin-right: 0;
-                    margin-bottom: 15px;
-                    width: 55px;
-                    height: 55px;
+                    margin-bottom: 12px;
+                    width: 50px;
+                    height: 50px;
 
                     img {
-                        width: 26px;
-                        height: 26px;
+                        width: 24px;
+                        height: 24px;
                     }
                 }
 
                 .call-text {
                     p {
-                        font-size: 14px;
+                        font-size: 13px;
+                        margin-bottom: 6px;
                     }
 
                     h6 {
-                        font-size: 18px;
+                        font-size: 16px;
+                        margin-bottom: 3px;
                     }
                 }
+            }
+
+            .alert {
+                padding: 15px 18px;
+                margin-bottom: 25px;
+                font-size: 14px;
+                border-radius: 10px;
             }
         }
     }
@@ -220,20 +574,110 @@
 @media (min-width: 576px) and (max-width: 767px) {
     .appointment-container {
         .contact-form {
-            padding: 45px;
+            padding: 35px;
+            margin: 0 15px;
 
             .form-group {
+                margin-bottom: 28px;
+
+                label {
+                    font-size: 16px;
+                }
+
                 .form-control {
-                    padding: 19px 22px;
-                    font-size: 17px;
-                    min-height: 58px;
+                    padding: 17px 20px;
+                    font-size: 16px;
+                    min-height: 55px;
+                }
+
+                .calendar-input-wrapper {
+                    .calendar-popup {
+                        width: 90vw;
+                        max-width: 450px;
+                        max-height: 80vh;
+
+                        .calendar-content {
+                            .calendar-grid {
+                                .calendar-days .calendar-day {
+                                    min-height: 65px;
+                                    padding: 6px 3px;
+
+                                    .day-number {
+                                        font-size: 14px;
+                                    }
+
+                                    .slots-indicator,
+                                    .closed-indicator {
+                                        font-size: 9px;
+                                    }
+                                }
+                            }
+
+                            .time-slots-section {
+                                .time-slots-grid {
+                                    grid-template-columns: repeat(4, 1fr);
+                                    gap: 10px;
+
+                                    .time-slot-btn {
+                                        padding: 11px 7px;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
             .appointment-btn {
-                padding: 19px 38px;
+                padding: 17px 35px;
                 font-size: 17px;
-                min-height: 58px;
+                min-height: 55px;
+            }
+
+            .appointment-call {
+                padding: 25px;
+                margin-top: 30px;
+
+                .icon {
+                    width: 60px;
+                    height: 60px;
+
+                    img {
+                        width: 28px;
+                        height: 28px;
+                    }
+                }
+
+                .call-text {
+                    p {
+                        font-size: 15px;
+                    }
+
+                    h6 {
+                        font-size: 19px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .appointment-container {
+        .contact-form {
+            padding: 45px;
+
+            .calendar-input-wrapper {
+                .calendar-popup {
+                    .calendar-content {
+                        .calendar-grid {
+                            .calendar-days .calendar-day {
+                                min-height: 75px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

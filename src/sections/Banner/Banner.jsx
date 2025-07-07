@@ -2,13 +2,7 @@ import React from 'react';
 import './Banner.scss';
 import {useNavigate} from 'react-router-dom';
 import icon from '../../assets/banner/icons/Calling.png';
-import bannerImg from '../../assets/banner/1.jpg';
-
-import bannerPattern from '../../assets/banner/pattern_02.png';
-//import shapeOne from '../../assets/download.svg';
-import shapeTwo from '../../assets/banner/vector_02.png';
-import shapeThree from '../../assets/banner/vector_03.png';
-import shapeFour from '../../assets/banner/pattern.png';
+import bannerBg from '../../assets/banner/2.jpg';
 
 const Banner = () => {
     const navigate = useNavigate();
@@ -32,61 +26,59 @@ const Banner = () => {
     };
 
     return (
-        <section className='section-bg section-common banner-section'>
-            <div className="d-table">
-                <div className="d-table-cell">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-6">
-                                <div className="banner-text" data-aos="fade-up" data-aos-duration="2000">
+        <section className='banner-section'>
+            <div className="banner-image-container">
+                <img src={bannerBg} alt="Dr. Pandharkar Chest Clinic" className="banner-background-image" />
+                {/* <div className="banner-image-overlay"></div> */}
+            </div>
+            
+            <div className="banner-content-below">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-10 col-md-12">
+                            <div className="banner-text" data-aos="fade-up" data-aos-duration="2000">
+                                <div className="banner-intro">
                                     <h1>Your most trusted health partner</h1>
+                                    <p className="banner-tagline">
+                                        Expert respiratory care and comprehensive chest health solutions for your well-being
+                                    </p>
+                                </div>
 
-                                    <div className="banner-bottom">
-                                        <div className="theme-btn">
-                                            <button onClick={handleBookAppointment}>
-                                                <span>
-                                                    Book an appointment
-                                                </span>
-                                            </button>
+                                <div className="banner-cta">
+                                    <button 
+                                        className="primary-btn"
+                                        onClick={handleBookAppointment}
+                                    >
+                                        <span>Book an appointment</span>
+                                        <div className="btn-arrow">→</div>
+                                    </button>
+
+                                    <div className="emergency-contact">
+                                        <div className="contact-icon" onClick={handlePhoneClick}>
+                                            <img src={icon} alt="Call" />
                                         </div>
-
-                                        <div className="banner-call">
-                                            <div className='icon' onClick={handlePhoneClick}>
-                                                <img src={icon} alt="icon" />
-                                            </div>
-                                            <div className='call-text'>
-                                                <p>Support Available </p>
-                                                <h6 onClick={handlePhoneClick}>+91-9158450788</h6>
-                                                <h6 onClick={() => window.open('tel:+918766040262', '_self')}>+91-8766040262</h6>
+                                        <div className="contact-info">
+                                            <span className="contact-label">Support Available</span>
+                                            <div className="contact-numbers">
+                                                <a href="tel:+919158450788">+91-9158450788</a>
+                                                <a href="tel:+918766040262">+91-8766040262</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="col-lg-6">
-                                <div className="banner-img-area" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="500">
-                                    <div className="banner-img">
-                                        <img src={bannerImg} alt="banner model" />
+                                <div className="banner-highlights">
+                                    <div className="highlight-item">
+                                        <span className="highlight-icon">🏥</span>
+                                        <span>Expert Care</span>
                                     </div>
-                                    
-                                    {/* Vector Shapes */}
-                                    <div className="shapes">
-                                        <div className="shpaess">
-                                        </div>
-                                        <img src={shapeTwo} alt="shape" />
-                                        <img src={shapeThree} alt="shape" />
-                                        <div className="tree-pattern-container">
-                                            <img src={shapeFour} alt="tree pattern" className="tree-pattern" />
-                                        </div>
+                                    <div className="highlight-item">
+                                        <span className="highlight-icon">⚡</span>
+                                        <span>Quick Diagnosis</span>
                                     </div>
-
-                                    {/* Tagline positioned below the tree */}
-                                    <div className="tree-tagline-wrapper">
-                                        <div className="tree-tagline">
-                                            <span className="tagline-text">More Oxygen</span>
-                                            <span className="tagline-text">More Life</span>
-                                        </div>
+                                    <div className="highlight-item">
+                                        <span className="highlight-icon">💝</span>
+                                        <span>Compassionate Treatment</span>
                                     </div>
                                 </div>
                             </div>
@@ -94,9 +86,6 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Banner Pattern Vector*/}
-            <img className='banner-pattern' src={bannerPattern} alt="banner pattern" />
         </section>
     );
 };

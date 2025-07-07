@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.scss';
 import logo from './../../assets/image1.png';
 import {Link, useNavigate} from 'react-router-dom';
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navbarItems = [
         { id: 1, name: 'HOME', path: '/' },
@@ -14,7 +16,17 @@ const Navbar = () => {
         { id: 5, name: 'CONTACT US', path: '/contact' }
     ];
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const handleBookAppointment = () => {
+        setIsMobileMenuOpen(false);
         navigate('/contact');
         // Small delay to ensure page loads before scrolling
         setTimeout(() => {
@@ -28,50 +40,57 @@ const Navbar = () => {
         }, 100);
     };
 
+    const handleNavClick = () => {
+        setIsMobileMenuOpen(false);
+    };
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
     return (    
-        <div className='main-nav'>
+        <div className={`main-nav ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
                 <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
                         {/* Logo */}
-                        <Link className="navbar-brand" to="/">
-                            <img src={logo} alt="logo" />
+                        <Link className="navbar-brand" to="/" onClick={handleNavClick}>
+                            <img src={logo} alt="Dr. Pandharkar Chest Clinic" />
                         </Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            {/* Navbar Link */}
-                            <ul className="navbar-nav m-auto mb-2 mb-lg-0">
-                               {
-                                navbarItems.map(navSingle =>
-                                    <li className="nav-item" key={navSingle.id}>
-                                    <Link className="nav-link" to={navSingle.path}>{navSingle.name}</Link>
-                                    </li>
-                                )
-                                }
 
+                        {/* Mobile Menu Toggle */}
+                        <button 
+                            className={`navbar-toggler ${isMobileMenuOpen ? 'active' : ''}`} 
+                            type="button" 
+                            onClick={toggleMobileMenu}
+                            aria-label="Toggle navigation"
+                        >
+                            <span className="hamburger-line"></span>
+                            <span className="hamburger-line"></span>
+                            <span className="hamburger-line"></span>
+                        </button>
+
+                        <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`} id="navbarSupportedContent">
+                            {/* Navbar Links */}
+                            <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+                               {navbarItems.map(navSingle =>
+                                    <li className="nav-item" key={navSingle.id}>
+                                        <Link 
+                                            className="nav-link" 
+                                            to={navSingle.path}
+                                            onClick={handleNavClick}
+                                        >
+                                            {navSingle.name}
+                                        </Link>
+                                    </li>
+                                )}
                             </ul>
                             
                             {/* Navbar Button */}
                             <div className="theme-btn">
-                                <button onClick={handleBookAppointment} style={{background: 'none', border: 'none', padding: 0}}>
-                                    <span style={{
-                                        background: 'linear-gradient(135deg, #1C66FF 0%, #608400 100%)',
-                                        color: '#ffffff',
-                                        padding: '16px 32px',
-                                        textDecoration: 'none',
-                                        borderRadius: '12px',
-                                        transition: 'all 0.3s ease',
-                                        border: '2px solid transparent',
-                                        fontSize: '16px',
-                                        fontWeight: '600',
-                                        display: 'inline-block',
-                                        boxShadow: '0 8px 25px rgba(28, 102, 255, 0.3)',
-                                        cursor: 'pointer'
-                                    }}>
-                                        Book appointment
-                                    </span>
+                                <button onClick={handleBookAppointment} className="appointment-btn">
+                                    <span className="btn-text">Book Appointment</span>
+                                    <span className="btn-icon">📅</span>
                                 </button>
                             </div>
                         </div>

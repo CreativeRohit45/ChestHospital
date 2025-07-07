@@ -2,13 +2,27 @@
 @use './../../sass/colors' as *;
 
 .main-nav {
-    padding: 15px 0;
+    padding: 20px 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 99999;
-    background: $color-white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(28, 102, 255, 0.1);
+
+    &.scrolled {
+        padding: 12px 0;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 5px 20px rgba(28, 102, 255, 0.1);
+        border-bottom-color: rgba(28, 102, 255, 0.2);
+
+        .navbar-brand img {
+            max-width: 180px;
+        }
+    }
 
     .container{
         max-width: 1320px;
@@ -18,58 +32,178 @@
         padding: 0;
         
         .navbar-brand {
+            transition: all 0.3s ease;
+            
             img {
                 max-width: 210px;
+                height: auto;
+                transition: all 0.3s ease;
             }
         }
+
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            background: transparent;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            &:hover {
+                background: rgba(28, 102, 255, 0.1);
+            }
+
+            .hamburger-line {
+                display: block;
+                width: 24px;
+                height: 3px;
+                background: $color-blue;
+                margin: 4px auto;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+                transform-origin: center;
+            }
+
+            &.active {
+                .hamburger-line {
+                    &:nth-child(1) {
+                        transform: rotate(45deg) translate(6px, 6px);
+                    }
+                    &:nth-child(2) {
+                        opacity: 0;
+                        transform: scale(0);
+                    }
+                    &:nth-child(3) {
+                        transform: rotate(-45deg) translate(6px, -6px);
+                    }
+                }
+            }
+        }
+
+        .navbar-collapse {
+            &.show {
+                background: $color-white;
+                border-radius: 15px;
+                margin-top: 15px;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(28, 102, 255, 0.15);
+                border: 1px solid rgba(28, 102, 255, 0.1);
+            }
+        }
+
         .navbar-nav {
             .nav-item {
+                margin: 0 5px;
+                
                 .nav-link {
                     color: $color-black;
                     font-size: 15px;
                     font-weight: 600;
-                    padding: 0;
-                    margin: 10px 30px;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        bottom: 8px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 0;
+                        height: 2px;
+                        background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                        transition: width 0.3s ease;
+                    }
 
                     &:hover {
                         color: $color-blue;
+                        background: rgba(28, 102, 255, 0.05);
+
+                        &:before {
+                            width: 60%;
+                        }
+                    }
+
+                    &.active {
+                        color: $color-blue;
+                        background: rgba(28, 102, 255, 0.1);
+
+                        &:before {
+                            width: 60%;
+                        }
                     }
                 }
             }
         }
 
         .theme-btn {
-            button {
-                background: none !important;
-                border: none !important;
-                padding: 0 !important;
-                cursor: pointer !important;
+            .appointment-btn {
+                background: linear-gradient(135deg, $color-blue 0%, $color-green 100%);
+                color: $color-white;
+                border: none;
+                padding: 14px 28px;
+                border-radius: 12px;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: 0 5px 15px rgba(28, 102, 255, 0.3);
+                position: relative;
+                overflow: hidden;
 
-                span {
-                    background: linear-gradient(135deg, #1C66FF 0%, #608400 100%) !important;
-                    color: #ffffff !important;
-                    padding: 16px 32px !important;
-                    text-decoration: none !important;
-                    border-radius: 12px !important;
-                    transition: all 0.3s ease !important;
-                    border: 2px solid transparent !important;
-                    font-size: 16px !important;
-                    font-weight: 600 !important;
-                    display: inline-block !important;
-                    box-shadow: 0 8px 25px rgba(28, 102, 255, 0.3) !important;
-                    cursor: pointer !important;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    transition: left 0.5s;
+                }
 
-                    &:hover {
-                        background: #ffffff !important;
-                        color: #1C66FF !important;
-                        border-color: #1C66FF !important;
-                        transform: translateY(-3px) !important;
-                        box-shadow: 0 12px 35px rgba(28, 102, 255, 0.4) !important;
+                .btn-text {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .btn-icon {
+                    position: relative;
+                    z-index: 2;
+                    font-size: 16px;
+                    transition: transform 0.3s ease;
+                }
+
+                &:hover {
+                    background: $color-white;
+                    color: $color-blue;
+                    border: 2px solid $color-blue;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(28, 102, 255, 0.4);
+
+                    &:before {
+                        left: 100%;
                     }
 
-                    &:active {
-                        transform: translateY(-1px) !important;
+                    .btn-icon {
+                        transform: scale(1.2);
                     }
+                }
+
+                &:active {
+                    transform: translateY(0);
                 }
             }
         }
@@ -79,14 +213,73 @@
 // Mobile Responsive
 @media (max-width: 575px) {
     .main-nav {
-        padding: 10px 0;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        padding: 12px 0;
+
+        &.scrolled {
+            padding: 10px 0;
+
+            .navbar-brand img {
+                max-width: 160px;
+            }
+        }
 
         .navbar {
+            .navbar-brand img {
+                max-width: 180px;
+            }
+
+            .navbar-toggler {
+                width: 36px;
+                height: 36px;
+
+                .hamburger-line {
+                    width: 20px;
+                    height: 2px;
+                    margin: 3px auto;
+                }
+            }
+
+            .navbar-collapse {
+                &.show {
+                    margin-top: 10px;
+                    padding: 15px;
+                    border-radius: 12px;
+                }
+            }
+
             .navbar-nav {
                 .nav-item {
+                    margin: 5px 0;
+                    
                     .nav-link {
-                        margin: 10px 0px;
+                        padding: 12px 15px;
+                        font-size: 14px;
+                        text-align: center;
+                        border-radius: 8px;
+                        
+                        &:before {
+                            display: none;
+                        }
+
+                        &:hover {
+                            background: rgba(28, 102, 255, 0.1);
+                        }
+                    }
+                }
+            }
+
+            .theme-btn {
+                margin-top: 15px;
+                text-align: center;
+
+                .appointment-btn {
+                    width: 100%;
+                    padding: 12px 24px;
+                    font-size: 14px;
+                    justify-content: center;
+
+                    .btn-icon {
+                        font-size: 14px;
                     }
                 }
             }
@@ -96,15 +289,44 @@
 
 @media (min-width: 576px) and (max-width: 767px) {
     .main-nav {
-        padding: 10px 0;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        padding: 15px 0;
+
+        &.scrolled {
+            padding: 12px 0;
+
+            .navbar-brand img {
+                max-width: 170px;
+            }
+        }
 
         .navbar {
+            .navbar-brand img {
+                max-width: 190px;
+            }
+
+            .navbar-collapse {
+                &.show {
+                    padding: 18px;
+                }
+            }
+
             .navbar-nav {
                 .nav-item {
                     .nav-link {
-                        margin: 10px 0px;
+                        padding: 10px 15px;
+                        margin: 5px 0;
+                        text-align: center;
                     }
+                }
+            }
+
+            .theme-btn {
+                margin-top: 15px;
+                text-align: center;
+
+                .appointment-btn {
+                    width: 100%;
+                    padding: 13px 26px;
                 }
             }
         }
@@ -114,15 +336,36 @@
 // Medium Devices Responsive
 @media (min-width: 768px) and (max-width: 991px) {
     .main-nav {
-        padding: 15px 0;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        padding: 18px 0;
+
+        &.scrolled {
+            padding: 14px 0;
+
+            .navbar-brand img {
+                max-width: 175px;
+            }
+        }
 
         .navbar {
+            .navbar-brand img {
+                max-width: 195px;
+            }
+
             .navbar-nav {
                 .nav-item {
+                    margin: 0 3px;
+                    
                     .nav-link {
-                        margin: 10px 0px;
+                        padding: 10px 15px;
+                        font-size: 14px;
                     }
+                }
+            }
+
+            .theme-btn {
+                .appointment-btn {
+                    padding: 12px 24px;
+                    font-size: 14px;
                 }
             }
         }
@@ -131,15 +374,33 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .main-nav {
-        padding: 20px 0;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-
         .navbar {
             .navbar-nav {
                 .nav-item {
+                    margin: 0 3px;
+                    
                     .nav-link {
-                        margin: 10px 15px;
+                        padding: 12px 18px;
                     }
+                }
+            }
+
+            .theme-btn {
+                .appointment-btn {
+                    padding: 13px 26px;
+                }
+            }
+        }
+    }
+}
+
+// Large screens
+@media (min-width: 1200px) {
+    .main-nav {
+        .navbar {
+            .navbar-nav {
+                .nav-item {
+                    margin: 0 8px;
                 }
             }
         }

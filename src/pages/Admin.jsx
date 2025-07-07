@@ -23,7 +23,7 @@ const Admin = () => {
   const [fetchingSlots, setFetchingSlots] = useState(false);
   const [exportLoading, setExportLoading] = useState(false);
   const recordsPerPage = 10;
-  const API_URL = 'https://hospital-backend-production-1b4c.up.railway.app';
+  const API_URL = 'https://hospital-backend-production-318c.up.railway.app';
 
   // Clinic schedule - same as in ContactForm
   const clinicSchedule = useMemo(() => ({

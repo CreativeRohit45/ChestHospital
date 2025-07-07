@@ -25,7 +25,7 @@ const Expert = () => {
     ];
 
     const achievements = [
-        { number: '10K+', label: 'Patients Treated' },
+        { number: '15K+', label: 'Patients Treated' },
         { number: '19+', label: 'Years Experience' },
         { number: '10+', label: 'Hospital Affiliations' },
         { number: '95%', label: 'Success Rate' }

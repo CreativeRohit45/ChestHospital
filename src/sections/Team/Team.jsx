@@ -60,7 +60,7 @@ const Team = () => {
                                                 <p>Years Experience</p>
                                             </div>
                                             <div className="experience-item">
-                                                <h4>10K+</h4>
+                                                <h4>15K+</h4>
                                                 <p>Patients Treated</p>
                                             </div>
                                             <div className="experience-item">
