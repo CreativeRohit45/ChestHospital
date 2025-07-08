@@ -14,9 +14,9 @@ const About = () => {
         <>
             <Navbar />
             <Team />
+            <Presentations />
             <AboutBanner />
             <Priority />
-            <Presentations />
             <Gallery />
             <Safety />
             <Faq />
