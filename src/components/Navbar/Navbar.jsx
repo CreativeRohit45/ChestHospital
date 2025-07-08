@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.scss';
 import logo from './../../assets/image1.png';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useLocation} from 'react-router-dom';
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -76,7 +77,7 @@ const Navbar = () => {
                                {navbarItems.map(navSingle =>
                                     <li className="nav-item" key={navSingle.id}>
                                         <Link 
-                                            className="nav-link" 
+                                            className={`nav-link ${location.pathname === navSingle.path ? 'active' : ''}`}
                                             to={navSingle.path}
                                             onClick={handleNavClick}
                                         >

@@ -6,6 +6,7 @@ import Priority from '../sections/Priority/Priority';
 import Safety from '../sections/Safety/Safety';
 import Gallery from '../sections/Gallery/Gallery';
 import Team from '../sections/Team/Team';
+import Presentations from '../sections/Presentations/Presentations';
 import Footer from '../sections/Footer/Footer';
 
 const About = () => {
@@ -15,6 +16,7 @@ const About = () => {
             <Team />
             <AboutBanner />
             <Priority />
+            <Presentations />
             <Gallery />
             <Safety />
             <Faq />
