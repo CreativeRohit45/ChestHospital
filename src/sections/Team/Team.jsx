@@ -1,7 +1,7 @@
 import React from 'react';
 import './Team.scss';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
-import imgOne from '../../assets/about/team/1.jpeg';
+import imgOne from '../../assets/about/team/doctor1.jpg';
 
 const Team = () => {
     const teams = [

@@ -2,36 +2,77 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    
+
     <!-- Favicon -->
     <link rel="icon" href="/1.svg" />
-    
-    <!-- Meta -->
+
+    <!-- Viewport & Theme -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using Vite and React" />
-    
-    <!-- AOS CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
-    <!-- Slick Carousel CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-    
+
+    <!-- Primary Meta Tags -->
+    <title>Dr. Pandharkar Chest Clinic | Chest Specialist in Pune</title>
+    <meta name="title" content="Dr. Pandharkar Chest Clinic | Chest Specialist in Pune">
+    <meta name="description" content="Expert care in asthma, lung diseases, and respiratory health. Book your appointment with Dr. Pandharkar, Pune's trusted chest physician.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.drpandharkarchestclinic.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.drpandharkarchestclinic.com/" />
+    <meta property="og:title" content="Dr. Pandharkar Chest Clinic | Chest Specialist in Pune" />
+    <meta property="og:description" content="Expert care in asthma, lung diseases, and respiratory health. Book your appointment with Dr. Pandharkar in Pune." />
+    <meta property="og:image" content="https://www.drpandharkarchestclinic.com/assets/banner/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.drpandharkarchestclinic.com/" />
+    <meta name="twitter:title" content="Dr. Pandharkar Chest Clinic | Chest Specialist in Pune" />
+    <meta name="twitter:description" content="Expert care in asthma, lung diseases, and respiratory health. Book your appointment with Dr. Pandharkar in Pune." />
+    <meta name="twitter:image" content="https://www.drpandharkarchestclinic.com/assets/banner/og-image.jpg" />
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    
-    <title>Dr. Pandharkar Chest Clinic</title>
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "name": "Dr. Pandharkar Chest Clinic",
+      "url": "https://www.drpandharkarchestclinic.com/",
+      "logo": "https://www.drpandharkarchestclinic.com/1.svg",
+      "image": "https://www.drpandharkarchestclinic.com/assets/banner/og-image.jpg",
+      "description": "Expert care in asthma, lung diseases, and respiratory health.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Office No. 017, 1st Floor, A Building, Kolte Patil Downtown City Vista",
+        "addressLocality": "Pune",
+        "postalCode": "411014",
+        "addressCountry": "IN"
+      },
+      "telephone": "+91-9158450788",
+      "openingHours": "Mo-Sa 10:00-13:00, 18:00-21:30"
+    }
+    </script>
   </head>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    
+
     <div id="root"></div>
 
-    <!-- Your main React entry point -->
+    <!-- Your React Entry Point -->
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- AOS JS -->
+    <!-- AOS Animation Script -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();

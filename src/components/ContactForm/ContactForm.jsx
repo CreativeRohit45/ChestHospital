@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import './ContactForm.scss';
-import icon from '../../assets/banner/icons/Calling.png';
 import axios from 'axios'; 
 
 const ContactForm = () => {
@@ -107,29 +106,19 @@ const ContactForm = () => {
     // Prevent body scroll when calendar is open
     useEffect(() => {
         if (showCalendar) {
-            // Store current scroll position
-            const scrollY = window.scrollY;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = '100%';
+            // Prevent background scroll
+            document.body.style.overflow = 'hidden';
         } else {
-            // Restore scroll position
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            if (scrollY) {
-                window.scrollTo(0, parseInt(scrollY || '0') * -1);
-            }
+            // Re-enable scrolling
+            document.body.style.overflow = '';
         }
 
-        // Cleanup on unmount
+        // Clean up when component unmounts
         return () => {
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
+            document.body.style.overflow = '';
         };
     }, [showCalendar]);
+
 
     // Fetch available slots for a specific date
     const fetchSlotsForDate = async (date) => {
@@ -512,7 +501,7 @@ const ContactForm = () => {
                         </div>
                     </div>
                     
-                    <div className="col-lg-6">
+                    <div className="col-lg-12">
                         <button type="submit" className="btn appointment-btn" disabled={loading}>
                             {loading ? 'Booking...' : 'Book Appointment'}
                         </button>

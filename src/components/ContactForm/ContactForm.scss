@@ -73,7 +73,7 @@
 
                 .calendar-popup {
                     position: fixed;
-                    top: 50%;
+                    top: 60%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     background: $color-white;
@@ -81,10 +81,13 @@
                     border-radius: 15px;
                     box-shadow: 0 25px 50px rgba(28, 102, 255, 0.3);
                     z-index: 9999;
-                    max-height: 90vh;
+                    max-height: 75vh;
                     overflow-y: auto;
                     width: 90vw;
-                    max-width: 600px;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
 
                     .calendar-header {
                         display: flex;
@@ -203,6 +206,7 @@
                                         background: rgba(28, 102, 255, 0.05);
                                         transform: translateY(-2px);
                                         box-shadow: 0 5px 15px rgba(28, 102, 255, 0.2);
+                                        color: $color-black;
                                     }
 
                                     &.selected {
@@ -268,6 +272,7 @@
                                 display: grid;
                                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
                                 gap: 10px;
+                                margin-bottom: 25px;
 
                                 .time-slot-btn {
                                     padding: 12px 8px;
@@ -435,6 +440,7 @@
 
                 .calendar-input-wrapper {
                     .calendar-popup {
+                        top: 60%;
                         width: 95vw;
                         max-width: 380px;
                         max-height: 85vh;
@@ -592,6 +598,7 @@
 
                 .calendar-input-wrapper {
                     .calendar-popup {
+                        top: 60%;
                         width: 90vw;
                         max-width: 450px;
                         max-height: 80vh;
